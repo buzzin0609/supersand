@@ -1,0 +1,49 @@
+#interface {
+	background-image: url('img/interface-bg.jpg');
+	background-size: cover;
+	color: #fff;
+	left: 10%;
+	max-width: 80%;
+	padding: 3rem;
+	position: absolute;
+	text-align: center;
+	top: 10%;
+	transition: 0.35s all ease-in-out;
+	width: 450px;
+	z-index: 5;
+	.btn {
+		margin: 10px;
+	}
+	.title {
+		color: #fff;
+	}
+
+	&.loading {
+		opacity: 0;
+	}
+	> div {
+		* {
+			position: relative;
+		}
+	}
+
+	.overlay {
+		background-color: fade-out(#000, 0.2);
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 0;
+	}
+
+	@include l {
+		width: 550px;
+		.title {
+			font-size: 3rem;
+		}
+		.btn {
+			font-size: 1.3rem;
+		}
+	};
+}

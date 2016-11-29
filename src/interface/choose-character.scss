@@ -1,0 +1,22 @@
+#choose-character {
+	text-align: center;
+	footer {
+		clear: both;
+	}
+	.btn {
+		display: inline-block;
+		width: auto;
+	}
+}
+
+.character {
+	@include grid(6);
+	img {
+		cursor: pointer;
+		transition: transform 0.35s;
+		transform: scale(0.95);
+		&:hover {
+			transform: scale(1);
+		}
+	}
+}

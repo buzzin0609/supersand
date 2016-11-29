@@ -1,0 +1,45 @@
+$black : lighten(#000, 15%);
+*, *:after, *:before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	text-align: inherit;
+	line-height: inherit;
+	color: inherit;
+}
+html {
+	box-sizing: border-box;
+	color: $black;
+	line-height: 1.6;
+	font-family: 'Oswald', sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+pre, code, kbd {
+	font-family: monospace;
+}
+pre {
+	overflow: auto;
+	padding: .5rem;
+}
+main, article, aside, details, figcaption, figure, footer,
+header, hgroup, iframe, main, menu, nav, section {
+	display: block
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+}
+img, table, svg, iframe { max-width: 100%; border: 0 }
+tr { border-bottom: 1px solid rgba(128, 128, 128, .25) }
+th, td { padding: .5rem }
+ul, ol { padding-left: 2rem }
+::-moz-focus-inner { padding: 0; border: 0 }

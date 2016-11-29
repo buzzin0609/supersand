@@ -1,0 +1,65 @@
+//some helpers I use often
+
+@mixin centerX {
+	left: 50%;
+	transform: translateX(-50%);
+}
+@mixin centerY {
+	top: 50%;
+	transform: translateY(-50%);
+}
+@mixin centerXY {
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin centerXand($args...) {
+	left: 50%;
+	transform: translateX(-50%) $args;
+}
+@mixin centerXYand($args...) {
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%) $args;
+}
+
+@mixin cleanInput {
+	outline: 0;
+	border: none;
+	-webkit-appearance: none;
+}
+
+$xs : 600px;
+$s : 768px;
+$m : 1024px;
+$l : 1280px;
+
+@mixin xs {
+	@media (max-width: $xs) {
+		@content;
+	}
+}
+@mixin xsmin {
+	@media (min-width: $xs + 1px) {
+		@content;
+	}
+}
+
+@mixin s {
+	@media (max-width: $s) {
+		@content;
+	}
+}
+
+@mixin m {
+	@media (min-width: $s + 1px) {
+		@content;
+	}
+}
+
+@mixin l {
+	@media (min-width: $m) {
+		@content;
+	}
+}

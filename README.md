@@ -6,7 +6,7 @@ Just a little personal project to get familier with ReactJS and have some fun wi
 
 ###Prerequisites
 
-You need Node JS on your computer and that's it.
+You need Node JS (and npm) installed on your computer. To check, type `npm -v` in a command console and you should get something link `3.8.2` as the output.
 
 ###Install
 

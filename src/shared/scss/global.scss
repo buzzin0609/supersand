@@ -1,0 +1,61 @@
+$restrict : 1280px;
+
+html {
+	font-family: 'Antenna', sans-serif;
+}
+
+.title, h1, h2, h3, h4, h5, .btn {
+	font-family: 'Molot', sans-serif;
+}
+.btn {
+	background-image: url('img/text-box-01.png');
+	background-size: 100% 100%;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	padding: 1rem;
+	&:hover {
+		animation-name: flickr;
+		animation-timing-function: linear;
+		animation-duration: 1s;
+		transform-style: preserve-3d;
+	}
+	&:active {
+		transform: scale(0.9);
+	}
+}
+
+.restrict {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: $restrict;
+}
+
+h1 {
+	font-size: 2rem;
+	@media (max-width: 600px) {
+		font-size: 1.3rem;
+	}
+}
+
+h2 {
+	font-size: 1.8rem;
+}
+
+.instructions {
+	margin-bottom: 2rem;
+	text-align: center;
+}
+
+.tagline {
+	margin-bottom: 2rem;
+}
+
+@keyframes flickr {
+	0% { opacity: 0;    }
+	10%   { opacity: 1; }
+	15%   { opacity: 0; }
+	20%   { opacity: .5; }
+	25%   { opacity: .2; }
+	30%,100%   { opacity: 1; }
+}

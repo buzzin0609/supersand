@@ -1,0 +1,60 @@
+/**
+ * All purpose grid mixin to use with grids and other arbituary width problems
+ */
+$columns: 12;
+$gutter: 2rem;
+
+@function grid-width($cols, $has-gutter:false, $gutter : 2rem) {
+ $expression : "(100% * #{$cols} / #{$columns})";
+ @if $has-gutter == true {
+   $expression: "(100% * #{$cols} / #{$columns}) - (#{$gutter} * (1 - #{$cols} / #{$columns}))";
+ }
+
+ @if str-index(quote($cols), %) != null {
+	$expression : "#{$cols}";
+	@if $has-gutter == true {
+		$expression : "#{$cols} - #{$gutter}";
+	}
+ }
+
+ @return calc(#{$expression});
+}
+
+@mixin group {
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+
+.group {
+	@include group;
+}
+
+@mixin grid($cols, $hasGutter : true, $thisGutter: $gutter) {
+	$num : '';
+	$percent : '';
+	@if str-index(quote($cols), %) == null {
+		$num : $columns / $cols;
+		$percent : 100% / $num;
+	}
+
+	@if str-index(quote($cols), %) != null {
+		$num : 100% / $cols;
+		$percent : $cols;
+	}
+
+	float: left;
+	width: $percent;
+	width: grid-width($cols, $hasGutter, $thisGutter);
+	@if ($hasGutter == true) {
+		margin-right: $thisGutter;
+	}
+	&:nth-child(#{$num}n + #{$num}) {
+		margin-right: 0;
+	}
+	&:nth-child(#{$num}n + #{$num + 1}) {
+		clear: left;
+	}
+}
