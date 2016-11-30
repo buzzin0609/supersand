@@ -11,10 +11,10 @@ var required = [
 
 var KeyboardActor = (function() {
 	var directions = {
-		'w' : 'up',
-		'd' : 'right',
-		's' : 'down',
-		'a' : 'left'
+		'ArrowUp' : 'up',
+		'ArrowRight' : 'right',
+		'ArrowDown' : 'down',
+		'ArrowLeft' : 'left'
 	};
 
 
@@ -46,8 +46,7 @@ var KeyboardActor = (function() {
 		}
 
 		keydown(e) {
-
-			this.direction = this.getDirection(e.key);
+			this.direction = directions[e.key];
 			if (this.direction) {
 				this.active[this.direction] = true;
 				if (!this.pressed.includes(this.direction)) {
@@ -59,7 +58,7 @@ var KeyboardActor = (function() {
 		}
 
 		keyup(e) {
-			this.direction = this.getDirection(e.key);
+			this.direction = directions[e.key];
 			if (this.direction) {
 				this.active[this.direction] = false;
 				this.pressed = this.pressed.filter(key => key !== this.direction);
