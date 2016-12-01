@@ -3,7 +3,6 @@ import SuperComponent from '../shared/SuperComponent';
 import MainMenu from './MainMenu';
 import Controls from './Controls';
 import Choose from './ChooseCharacter';
-
 // var GameState = require('../shared/GameState');
 
 
@@ -15,6 +14,8 @@ class Interface extends SuperComponent {
 			view : 'main',
 			classes : ''
 		};
+
+		this.On.set('setView', this.setView.bind(this));
 	}
 
 	componentWillMount() {
@@ -36,15 +37,16 @@ class Interface extends SuperComponent {
 
 	get content() {
 		var content;
+
 		switch (this.state.view) {
 			case 'main':
 				content = (
-					<MainMenu setView={ this.setView.bind(this) } />
+					<MainMenu />
 				);
 				break;
 			case 'controls':
 				content = (
-					<Controls setView={ this.setView.bind(this) } />
+					<Controls />
 				);
 				break;
 			case 'pause':
@@ -56,7 +58,7 @@ class Interface extends SuperComponent {
 				break;
 			case 'choose':
 				content = (
-					<Choose setView={ this.setView.bind(this) }></Choose>
+					<Choose />
 				);
 				break;
 			default:

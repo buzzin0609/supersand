@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import On from '../utils/On.js';
 
 class SuperComponent extends Component {
 
@@ -25,6 +26,9 @@ class SuperComponent extends Component {
 			classes : current.join(' ')
 		}, cb);
 	}
+
 }
+
+SuperComponent.prototype.On = On;
 
 export default SuperComponent;

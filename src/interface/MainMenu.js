@@ -7,8 +7,8 @@ class MainMenu extends SuperComponent {
 		return (
 			<div>
 				<h1 className="title">The Legend of the SuperSand Saiyan!</h1>
-				<span className="btn" onClick={ this.props.setView.bind(this, 'controls') }>Controls</span>
-				<span className="btn" onClick={ this.props.setView.bind(this, 'choose') }>Choose Character</span>
+				<span className="btn" onClick={ this.On.trigger.bind(this, 'setView', 'controls') }>Controls</span>
+				<span className="btn" onClick={ this.On.trigger.bind(this, 'setView', 'choose') }>Choose Character</span>
 			</div>
 		);
 	}

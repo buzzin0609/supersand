@@ -1,6 +1,8 @@
 import React from 'react';
 import SuperComponent from '../shared/SuperComponent';
 var GameState = require('../shared/GameState');
+import On from '../utils/On.js';
+console.log(On);
 
 class ChooseCharacter extends SuperComponent {
 
@@ -45,7 +47,7 @@ class ChooseCharacter extends SuperComponent {
 				{ this.outputCharacters() }
 
 				<footer>
-					<span className="btn" onClick={ this.props.setView.bind(this, 'main') }>Main Menu</span>
+					<span className="btn" onClick={ On.trigger.bind(this, 'setView', 'main') }>Main Menu</span>
 				</footer>
 			</div>
 		);
