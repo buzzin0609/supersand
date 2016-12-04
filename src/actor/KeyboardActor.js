@@ -3,6 +3,7 @@ import Actor from './Actor';
 import Events from '../events/Events';
 import Utils from '../utils/utils';
 import _ from '../shared/Private';
+import Collisionable from '../collisions/Collisionable';
 
 var required = [
 	'srcLocations',
@@ -32,6 +33,7 @@ var KeyboardActor = (function() {
 			this.direction = false;
 			this.srcLocations = args.srcLocations;
 			this.pressed = [];
+			this.previous = false;
 			this.events();
 		}
 
@@ -81,6 +83,8 @@ var KeyboardActor = (function() {
 
 		move() {
 			var speed = _.get(this).attributes.speed;
+			this.previous = Object.assign({}, this.position);
+
 			if (this.active.up) {
 				this.position.y -= speed;
 			}
@@ -98,6 +102,7 @@ var KeyboardActor = (function() {
 			}
 
 			this.handleBoundaries();
+			this.handleQuadrants();
 		}
 
 		handleBoundaries() {
@@ -120,6 +125,31 @@ var KeyboardActor = (function() {
 
 			this.position.x = x;
 			this.position.y = y;
+		}
+
+		handleQuadrants() {
+			let quadrants = this.scene.quadrants;
+
+			for (let i = 0, l = quadrants.length; i < l; i++) {
+				if (Collisionable.detect(this.position, quadrants[i])) {
+					// console.log('in quadrant', quadrants[i]);
+					this.handleObstacles(quadrants[i]);
+					break;
+				}
+			}
+		}
+
+		handleObstacles(quadrant) {
+			let obstacles = quadrant.obstacles;
+			for (let i = 0, l = obstacles.length; i < l; i++) {
+				if (Collisionable.detect(this.position, obstacles[i])) {
+					// console.log('hitting obstacle', obstacles[i]);
+					console.log('previous', this.previous);
+					console.log('current', this.previous);
+					this.position = this.previous;
+					break;
+				}
+			}
 		}
 
 		render() {

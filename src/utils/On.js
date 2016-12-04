@@ -1,8 +1,16 @@
 
-var On = (function() {
+var Singleton = (function() {
 	var events = {};
-
+	var Instance = false;
 	return class On {
+
+		constructor() {
+			if (!Instance) {
+				Instance = this;
+			}
+			return this;
+		}
+
 		set(evt, cb) {
 			events[evt] = cb;
 		}
@@ -14,4 +22,4 @@ var On = (function() {
 }());
 
 
-export default new On();
+export default new Singleton();

@@ -1,31 +1,31 @@
-
-
-var Scenes = (function() {
+var Singleton = (function() {
 	var Instance = false;
 	var sceneObj = {};
-	var Constructor = function() {
-		if (!Instance) {
-			Instance = this;
+
+	return class Scenes {
+
+		constructor() {
+			if (!Instance) {
+				Instance = this;
+			}
+			return this;
 		}
-		return this;
+
+		register(key, Scene) {
+			sceneObj[key] = Scene;
+			return Scene;
+		}
+
+		unregister(key) {
+			delete sceneObj[key];
+		}
+
+		get(key) {
+			return sceneObj[key];
+		}
+
 	};
 
-	var p = Constructor.prototype;
-
-	p.register = function(key, Scene) {
-		sceneObj[key] = Scene;
-		return Scene;
-	};
-
-	p.unregister = function(key) {
-		delete sceneObj[key];
-	};
-
-	p.get = function(key) {
-		return sceneObj[key];
-	};
-
-	return Constructor;
 }());
 
-module.exports = new Scenes();
+module.exports = new Singleton();

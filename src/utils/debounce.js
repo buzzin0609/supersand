@@ -24,13 +24,16 @@ var Debounce = (function() {
 	});
 
 	class Debounce {
-		on(evt, cb) {
-			cb = cb.length ? cb : [cb];
-			events[evt].push.apply(events[evt], cb);
+		on(evt, cbs) {
+			cbs = Array.isArray(cbs) ? cbs : [cbs];
+			events[evt].push.apply(events[evt], cbs);
 		}
-		off(evt, cb) {
-			var index = events[evt].indexOf(cb);
-			events[evt].splice(index, 1);
+		off(evt, cbs) {
+			cbs = Array.isArray(cbs) ? cbs : [cbs];
+			cbs.forEach(cb => {
+				let index = events[evt].indexOf(cb);
+				events[evt].splice(index, 1);
+			});
 		}
 	}
 

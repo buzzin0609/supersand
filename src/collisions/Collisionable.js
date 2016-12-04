@@ -1,5 +1,5 @@
 
-var Collisionable = (function() {
+var Singleton = (function() {
 
 
 	return class Collisionable {
@@ -19,3 +19,5 @@ var Collisionable = (function() {
 
 	};
 }());
+
+export default new Singleton();

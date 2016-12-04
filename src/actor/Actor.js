@@ -32,7 +32,10 @@ class Actor {
 			y : args.startY
 		};
 
-		this.position = {};
+		this.position = {
+			width: this.width,
+			height: this.height
+		};
 
 		this.current = {
 			frames : this.frames[0],
@@ -57,8 +60,8 @@ class Actor {
 	}
 
 	setPosition() {
-		this.position.x = (this.scene.canvas.width * this.start.x) - (this.width / 2);
-		this.position.y = (this.scene.canvas.height * this.start.y) - (this.height / 2);
+		this.position.x = Math.floor((this.scene.canvas.width * this.start.x) - (this.width / 2));
+		this.position.y = Math.floor((this.scene.canvas.height * this.start.y) - (this.height / 2));
 	}
 
 	clear() {

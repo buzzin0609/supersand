@@ -18,7 +18,7 @@ export default new KeyboardActor({
 	width : 32,
 	height : 32,
 	startX : 0.5,
-	startY : 0.5,
+	startY : 0.6,
 	srcLocations : {
 		'up' : 2,
 		'right' : 4,

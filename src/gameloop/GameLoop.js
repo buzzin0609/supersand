@@ -1,5 +1,5 @@
 
-var GameLoop = (function() {
+var Singleton = (function() {
 	var Instance = false;
 	return class GameLoop {
 		constructor() {
@@ -48,4 +48,4 @@ var GameLoop = (function() {
 }());
 
 
-module.exports = new GameLoop();
+module.exports = new Singleton();
