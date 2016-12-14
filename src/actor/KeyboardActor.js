@@ -25,10 +25,10 @@ var KeyboardActor = (function() {
 			super(args);
 			_.set(this, { attributes : args.attributes});
 			this.active = {
-				'up' : false,
-				'right' : false,
-				'down' : false,
-				'left' : false
+				up : false,
+				right : false,
+				down : false,
+				left : false
 			};
 			this.direction = false;
 			this.srcLocations = args.srcLocations;
@@ -144,9 +144,22 @@ var KeyboardActor = (function() {
 			for (let i = 0, l = obstacles.length; i < l; i++) {
 				if (Collisionable.detect(this.position, obstacles[i])) {
 					// console.log('hitting obstacle', obstacles[i]);
-					console.log('previous', this.previous);
-					console.log('current', this.previous);
-					this.position = this.previous;
+
+					let side = Collisionable.detectSide(this.previous, obstacles[i]);
+					switch (side) {
+						case 'up':
+						case 'down':
+							this.position.y = this.previous.y;
+							break;
+						case 'left':
+						case 'right':
+							this.position.x = this.previous.x;
+							break;
+						default:
+							console.log('no side detected');
+					}
+					// this.position = this.previous;
+
 					break;
 				}
 			}
