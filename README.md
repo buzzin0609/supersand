@@ -1,4 +1,4 @@
-##Legend of the Supersand Saiyain HTML5 game
+##Legend of the Supersand Saiyain HTML5 game [IN PROGRESS]
 
 Just a little personal project to get familier with ReactJS and have some fun with HTML5 Canvas
 
