@@ -13,11 +13,6 @@ var Singleton = (function() {
 		}
 
 		detectSide(main, target) {
-			// let left = main.x + main.width < target.x;
-			// let right = main.x > target.x + target.width;
-			// let up = main.y + main.height < target.y;
-			// let down = main.y > target.y + target.height;
-			// console.log(left, right, up, down);
 			if (main.x + main.width < target.x) {
 				return 'left';
 			}
@@ -31,6 +26,8 @@ var Singleton = (function() {
 			if (main.y + main.height < target.y) {
 				return 'up';
 			}
+
+			return 'all';
 
 		}
 

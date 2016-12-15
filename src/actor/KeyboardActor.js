@@ -143,24 +143,17 @@ var KeyboardActor = (function() {
 			let obstacles = quadrant.obstacles;
 			for (let i = 0, l = obstacles.length; i < l; i++) {
 				if (Collisionable.detect(this.position, obstacles[i])) {
-					// console.log('hitting obstacle', obstacles[i]);
 
 					let side = Collisionable.detectSide(this.previous, obstacles[i]);
-					switch (side) {
-						case 'up':
-						case 'down':
-							this.position.y = this.previous.y;
-							break;
-						case 'left':
-						case 'right':
-							this.position.x = this.previous.x;
-							break;
-						default:
-							console.log('no side detected');
+					// console.log(side);
+					if (side === 'up' || side === 'down') {
+						this.position.y = this.previous.y;
 					}
-					// this.position = this.previous;
 
-					break;
+					if (side === 'left' || side === 'right') {
+						this.position.x = this.previous.x;
+					}
+
 				}
 			}
 		}

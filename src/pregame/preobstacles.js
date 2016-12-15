@@ -2,9 +2,9 @@ export default [
 	{
 		name : 'house',
 		startX : 0.5,
-		startY : 0.32,
+		startY : 0.28,
 		width : 160,
-		height : 210
+		height : 195
 	},
 	{
 		name : 'tree1',
