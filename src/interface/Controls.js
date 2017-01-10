@@ -1,5 +1,6 @@
 import React from 'react';
 import SuperComponent from '../shared/SuperComponent';
+import Btn from './Btn';
 // var GameState = require('../shared/GameState');
 
 class Controls extends SuperComponent {
@@ -11,8 +12,7 @@ class Controls extends SuperComponent {
 				<p>Arrow keys to move</p>
 				<p>Press F to hit</p>
 				<p>Press G to transform</p>
-				<span className="btn" onClick={ this.On.trigger.bind(this, 'setView', 'main') }>Main Menu</span>
-				<span className="btn" onClick={ this.On.trigger.bind(this, 'setView', 'choose') }>Choose Character</span>
+				<Btn setView="main">Main Menu</Btn>
 			</div>
 		);
 	}

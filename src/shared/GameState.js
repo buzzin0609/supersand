@@ -1,9 +1,9 @@
 var _ = require('./Private');
-import Characters from './Characters';
 
 var GameState = (function() {
 	var Instance = false;
-	return class GameState {
+	var data = {};
+	class GameState {
 		constructor() {
 			if (!Instance) {
 				Instance = this;
@@ -22,11 +22,19 @@ var GameState = (function() {
 		get hasStarted() { return _.get(this).started; }
 
 		get character() {
-			return Characters.get(_.get(this).character);
+			return _.get(this).character;
 		}
 
-		set character(name) {
-			_.get(this).character = name;
+		set character(character) {
+			_.get(this).character = character;
+		}
+
+		get(name) {
+			return data[name];
+		}
+
+		set(name, value) {
+			data[name] = value;
 		}
 
 		start() {
@@ -35,7 +43,16 @@ var GameState = (function() {
 			this.trigger('start');
 		}
 
+		stop() {
+			console.log('stop triggered');
+			_.get(this).started = false;
+			this.trigger('stop');
+		}
+
 		on(evt, cb) {
+			if (this.hasStarted) {
+				cb();
+			}
 			evt.split(' ').forEach(e => {
 				if (this.events[e]) {
 					this.events[e].push(cb);
@@ -52,7 +69,8 @@ var GameState = (function() {
 				console.error('Event type not in GameState');
 			}
 		}
-	};
+	}
+	return new GameState();
 }());
 
-module.exports = new GameState();
+module.exports = GameState;

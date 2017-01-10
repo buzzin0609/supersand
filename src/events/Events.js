@@ -3,20 +3,26 @@ var Events = (function() {
 	var events = {};
 
 	return class Events {
-		on(evt, thisArg, cb) {
+		on(evt, cb) {
+			let timestamp = Date.now();
 			if (!events[evt]) {
-				events[evt] = [cb];
+				events[evt] = {};
 				window.addEventListener(evt, function on(e) {
-					events[evt].forEach(cb => cb.call(thisArg, e));
+					let event = events[evt];
+					console.log(event);
+					Object.keys(event).forEach(cb => {
+						event[cb].call(event[cb], e);
+					});
 				});
-			} else {
-				events[evt].push(cb);
 			}
+			events[evt][timestamp] = cb;
+			console.log('registering event', events[evt]);
+			return timestamp;
 		}
 
-		off(evt, cb) {
-			var index = events[evt].indexOf(cb);
-			events[evt].splice(index, 1);
+		off(evt, timestamp) {
+			console.log(events[evt], timestamp);
+			delete events[evt][timestamp];
 		}
 	};
 }());

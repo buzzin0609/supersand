@@ -27,11 +27,11 @@ var Factory = (function() {
 
 		setup() {
 			let canvas = this.scene.canvas;
-			let rows = this.qNum / 2;
+			let rows = this.qNum / 4;
 			this.height = Math.floor(canvas.height / rows);
 			this.width = Math.floor(canvas.width / rows);
-			let row = Math.floor(this.index / rows);
 			let rowIndex = this.index % rows;
+			let row = Math.floor(this.index / rows);
 			this.x = Math.floor(this.width * rowIndex);
 			this.y = Math.floor(this.height * row);
 		}

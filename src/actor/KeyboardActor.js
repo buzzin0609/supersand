@@ -23,7 +23,7 @@ var KeyboardActor = (function() {
 		constructor(args) {
 			Utils.requiredProps(required, args);
 			super(args);
-			_.set(this, { attributes : args.attributes});
+			this.attributes = args.attributes;
 			this.active = {
 				up : false,
 				right : false,
@@ -34,17 +34,19 @@ var KeyboardActor = (function() {
 			this.srcLocations = args.srcLocations;
 			this.pressed = [];
 			this.previous = false;
-			this.events();
+			this.initialised = Date.now();
+			this.events.call(this);
+
 		}
 
 		events() {
-			Events.on('keydown', this, this.keydown);
-			Events.on('keyup', this, this.keyup);
+			this.keydownEvent = Events.on('keydown', this.keydown.bind(this));
+			this.keyupEvent = Events.on('keyup', this.keyup.bind(this));
 		}
 
 		unMount() {
-			Events.off('keydown', this.keydown);
-			Events.off('keyup', this.keyup);
+			Events.off('keydown', this.keydownEvent);
+			Events.off('keyup', this.keyupEvent);
 		}
 
 		keydown(e) {
@@ -61,6 +63,7 @@ var KeyboardActor = (function() {
 
 		keyup(e) {
 			this.direction = directions[e.key];
+			console.log('triggering keyup');
 			if (this.direction) {
 				this.active[this.direction] = false;
 				this.pressed = this.pressed.filter(key => key !== this.direction);
@@ -74,6 +77,7 @@ var KeyboardActor = (function() {
 
 		setSrc() {
 			if (this.pressed[0]) {
+				console.log('set src', this);
 				var src = this.srcLocations[this.pressed[0]];
 				this.current.y = src * this.height;
 				this.current.x = 0;
@@ -82,7 +86,7 @@ var KeyboardActor = (function() {
 		}
 
 		move() {
-			var speed = _.get(this).attributes.speed;
+			var speed = this.attributes.speed;
 			this.previous = Object.assign({}, this.position);
 
 			if (this.active.up) {
@@ -134,7 +138,7 @@ var KeyboardActor = (function() {
 				if (Collisionable.detect(this.position, quadrants[i])) {
 					// console.log('in quadrant', quadrants[i]);
 					this.handleObstacles(quadrants[i]);
-					break;
+					// break;
 				}
 			}
 		}
@@ -145,7 +149,7 @@ var KeyboardActor = (function() {
 				if (Collisionable.detect(this.position, obstacles[i])) {
 
 					let side = Collisionable.detectSide(this.previous, obstacles[i]);
-					// console.log(side);
+					console.log(side);
 					if (side === 'up' || side === 'down') {
 						this.position.y = this.previous.y;
 					}
@@ -158,15 +162,14 @@ var KeyboardActor = (function() {
 			}
 		}
 
-		render() {
-
+		beforeRender() {
 			if (this.pressed[0]) {
 				this.move();
 			} else {
 				this.current.x = 0;
 			}
-			super.render();
 		}
+
 	};
 }());
 

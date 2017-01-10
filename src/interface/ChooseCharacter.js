@@ -1,8 +1,8 @@
 import React from 'react';
 import SuperComponent from '../shared/SuperComponent';
 var GameState = require('../shared/GameState');
-import On from '../utils/On.js';
-console.log(On);
+import Btn from './Btn';
+import PreGoku from '../pregame/PreGoku';
 
 class ChooseCharacter extends SuperComponent {
 
@@ -12,26 +12,24 @@ class ChooseCharacter extends SuperComponent {
 		this.characters = [
 			{
 				name : 'Vegeta',
-				img : 'veg-port.png'
+				profilePic : 'veg-port.png'
 			},
-			{
-				name : 'Goku',
-				img : 'gok-port-ss.png'
-			}
+			PreGoku()
 		];
 	}
 
-	setCharacter(name) {
-		GameState.character = name;
+	setCharacter(Character) {
+		GameState.character = Character;
 		GameState.start.call(GameState);
+		this.On.trigger('setView', 'game');
 	}
 
 	outputCharacters() {
 		var jsx = [];
 		this.characters.forEach(character => {
 			jsx.push(
-				<article key={character.name} className="character" onClick={ this.setCharacter.bind(this, character.name.toLowerCase()) }>
-					<img src={ 'img/' + character.img } alt="Choose Vegeta"/>
+				<article key={character.name} className="character" onClick={ this.setCharacter.bind(this, character) }>
+					<img src={ 'img/' + character.profilePic } alt={`Choose ${character.name}`}/>
 					<h3>{ character.name }</h3>
 				</article>
 			);
@@ -47,7 +45,7 @@ class ChooseCharacter extends SuperComponent {
 				{ this.outputCharacters() }
 
 				<footer>
-					<span className="btn" onClick={ On.trigger.bind(this, 'setView', 'main') }>Main Menu</span>
+					<Btn setView="main">Main Menu</Btn>
 				</footer>
 			</div>
 		);

@@ -8,15 +8,22 @@
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.9.1",
     "gulp-watch": "^4.3.11",
+    "npm-run-all": "^4.0.0",
     "react-scripts": "0.7.0",
     "worker-loader": "^0.7.1"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "multiparty": "^4.1.2",
     "react": "^15.4.0",
     "react-dom": "^15.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "gulp": "gulp",
+    "react-start": "react-scripts start",
+    "server": "react-scripts build && nodemon server/index.js",
+    "start": "npm-run-all --parallel server react-start gulp",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

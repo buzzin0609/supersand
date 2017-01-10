@@ -27,6 +27,10 @@ class SuperComponent extends Component {
 		}, cb);
 	}
 
+	transition(num) {
+		return new Promise(resolve => setTimeout(resolve, (num || 350)));
+	}
+
 }
 
 SuperComponent.prototype.On = On;

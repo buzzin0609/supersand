@@ -13,21 +13,25 @@ var Singleton = (function() {
 		}
 
 		detectSide(main, target) {
-			if (main.x + main.width < target.x) {
-				return 'left';
-			}
-			if (main.x > target.x + target.width) {
-				return 'right';
+			let side = 'all';
+
+			if (main.x + main.width >= target.x) {
+				side = 'left';
 			}
 
-			if (main.y > target.y + target.height) {
-				return 'down';
-			}
-			if (main.y + main.height < target.y) {
-				return 'up';
+			if (main.x <= target.x + target.width) {
+				side = 'right';
 			}
 
-			return 'all';
+			if (main.y >= target.y + target.height) {
+				side = 'down';
+			}
+
+			if (main.y + main.height <= target.y) {
+				side = 'up';
+			}
+
+			return side;
 
 		}
 

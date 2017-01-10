@@ -14,34 +14,36 @@ var Factory = (function() {
 			Utils.requiredProps(required, args);
 			Object.assign(this, args);
 
-			this.percentages = {
-				width : +(this.width / this.scene.naturalArea.width).toFixed(2),
-				height: +(this.height / this.scene.naturalArea.height).toFixed(2)
-			};
-			console.log(this.scene.naturalArea);
 			this.x = false;
 			this.y = false;
+			this.percentages = {
+				width: args.width,
+				height: args.height
+			};
 			this.setup();
 			Utils.debounce.on('resize', this.setup.bind(this));
-			GameLoop.register(() => {
-				this.scene.ctx.fillRect(this.x, this.y, this.width, this.height);
-			});
+			GameLoop.register(this.render.bind(this));
 		}
 
 
 		setup() {
 			// let canvas = this.scene.canvas;
 			var scene = this.scene;
-			this.width = Math.floor(this.scene.width * this.percentages.width);
-			this.height = Math.floor(this.scene.height * this.percentages.height);
-			this.x = (scene.width * this.startX) - (this.width / 2);
-			this.y = (scene.height * this.startY) - (this.height / 2);
+			this.width = Math.floor(scene.canvas.width * this.percentages.width);
+			this.height = Math.floor(scene.canvas.height * this.percentages.height);
+			this.x = Math.floor(scene.canvas.width * this.startX);
+			this.y = Math.floor(scene.canvas.height * this.startY);
 			console.log(this);
 
-			// this.x = Math.floor(this.width * rowIndex);
-			// this.y = Math.floor(this.height * row);
 		}
 
+		render() {
+			this.scene.ctx.fillRect(this.x, this.y, this.width, this.height);
+		}
+
+		unregister() {
+			GameLoop.unregister(this.render.bind(this));
+		}
 
 
 	}

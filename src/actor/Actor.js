@@ -1,4 +1,4 @@
-
+import Characters from '../shared/Characters';
 var buildFrameArray = require('./buildFrameArray');
 var Utils = require('../utils/utils');
 
@@ -8,8 +8,6 @@ var preRenderCTX = preRenderCanvas.getContext('2d');
 var required = [
 	'name',
 	'imgUrl',
-	'frameLen',
-	'frameTicks',
 	'width',
 	'height'
 ];
@@ -20,19 +18,19 @@ class Actor {
 		Utils.requiredProps(required, args);
 		this.name = args.name;
 		this.imgUrl = args.imgUrl;
-		this.frames = buildFrameArray(args.frames);
+		this.profilePic = args.profilePic;
+		this.frames = Array.isArray(args.frames[0]) ? args.frames : buildFrameArray(args.frames);
 		this.frameIndex = 0;
-		this.beforeRender = args.beforeRender || false;
 
 		this.width = args.width;
 		this.height = args.height;
 
-		this.start = {
+		this.start = args.start || {
 			x : args.startX,
 			y : args.startY
 		};
 
-		this.position = {
+		this.position = args.position || {
 			width: this.width,
 			height: this.height
 		};
@@ -42,6 +40,10 @@ class Actor {
 			x : 0,
 			y : 0
 		};
+
+		this.level = args.level || 1;
+
+		Characters.add(this);
 
 	}
 
@@ -69,10 +71,10 @@ class Actor {
 	}
 
 	render() {
-		this.clear();
 		if (this.beforeRender) {
-			this.beforeRender.call(this);
+			this.beforeRender();
 		}
+		this.clear();
 
 		this.ctx.drawImage(this.img, this.current.x, this.current.y, this.width, this.height, this.position.x, this.position.y, this.width, this.height);
 

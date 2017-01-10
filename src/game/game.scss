@@ -1,0 +1,15 @@
+#game {
+	background-image: url('img/grass.png');
+	height: 100vh;
+}
+
+.wrapper {
+	position: relative;
+}
+
+.scene {
+	left: 0;
+	position: absolute;
+	top: 0;
+	z-index: 2;
+}

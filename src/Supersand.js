@@ -1,23 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import SuperComponent from './shared/SuperComponent';
 import Interface from './interface/Interface';
 import PreGame from './pregame/PreGame';
+import Game from './game/Game';
 
-// var Actor = require('./actor/Actor');
-// console.log(new Actor('Goku', {
-// 	imgUrl : 'goku.jpg',
-// 	frameLen : 8,
-// 	frameTicks : 10
-// }));
 var GameState = require('./shared/GameState');
 // console.log(GameState);
 
-class Supersand extends Component {
+class Supersand extends SuperComponent {
 
 	constructor(props) {
 		super(props);
 		this.state = {
 			content : <PreGame />
 		};
+		GameState.on('start', this.onStart.bind(this));
+		GameState.on('stop', this.onStop.bind(this));
+	}
+
+	get content() {
+		return this.state.content;
 	}
 
 	set content(jsx) {
@@ -26,18 +28,20 @@ class Supersand extends Component {
 		});
 	}
 
+	onStart() {
+		this.content = <Game />;
+	}
+
+	onStop() {
+		console.log('triggering on stop');
+		this.content = <PreGame />;
+	}
+
 	render() {
-
-		GameState.on('start', () => {
-			this.content = (
-				<p>started</p>
-
-			);
-		});
 		return (
 			<article id="supersand">
 				<Interface />
-				{ this.state.content }
+				{ this.content }
 			</article>
 		)
 	}

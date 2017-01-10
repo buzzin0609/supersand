@@ -15,7 +15,6 @@ var Singleton = (function() {
 
 		register(cb) {
 			this.callbacks.push(cb);
-			console.log(this);
 		}
 
 		unregister(cb) {
