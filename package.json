@@ -9,7 +9,6 @@
     "gulp-sourcemaps": "^1.9.1",
     "gulp-watch": "^4.3.11",
     "npm-run-all": "^4.0.0",
-    "react-scripts": "0.7.0",
     "worker-loader": "^0.7.1"
   },
   "dependencies": {
@@ -17,6 +16,7 @@
     "express": "^4.14.0",
     "multiparty": "^4.1.2",
     "react": "^15.4.0",
+	"react-scripts": "0.7.0",
     "react-dom": "^15.4.0"
   },
   "scripts": {
