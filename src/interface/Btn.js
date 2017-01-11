@@ -4,7 +4,9 @@ import SuperComponent from '../shared/SuperComponent';
 export default class Btn extends SuperComponent {
 
 	handleClick() {
-		this.On.trigger.call(this, 'setView', this.props.setView);
+		if (this.props.setView) {
+			this.On.trigger.call(this, 'setView', this.props.setView);
+		}
 		if (this.props.clickHandlers) {
 			this.props.clickHandlers.forEach(fn => fn());
 		}

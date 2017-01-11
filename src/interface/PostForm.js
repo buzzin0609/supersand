@@ -78,7 +78,7 @@ export default class Login extends SuperComponent {
 	renderInputs() {
 		let inputs = this.state.inputs;
 		return inputs && inputs.map(input => {
-			return <input type={input.type} name={input.name} key={input.name} />
+			return <input type={input.type} name={input.name} placeholder={input.placeholder ? input.placeholder : ''} key={input.name} />
 		});
 	}
 
@@ -101,6 +101,10 @@ export default class Login extends SuperComponent {
 				{
 					this.state.error &&
 					(<p className="message">{ this.state.error }</p>)
+				}
+				{
+					this.state.message &&
+					(<p className="message">{ this.state.message }</p>)
 				}
 
 				{ this.afterRender() }

@@ -38,15 +38,33 @@ export default class SetSecret extends PostForm {
 	beforeInputs() {
 		let { player } = this;
 		if (player && player.games && player.games.length) {
-			return player.games.map(game => {
-				return <p onClick={this.handleOverwrite.bind(this, game.saveName)} key={game.id}>{game.saveName}</p>
-			});
+			return (
+				<div className="saved-games">
+					{
+						player.games.map(game => {
+							return <Btn clickHandlers={[this.handleOverwrite.bind(this, game.saveName)]} key={game.id}>{game.saveName}</Btn>
+						})
+					}
+				</div>
+			)
 		}
 		return <p>No saved games</p>;
 	}
 
 	handleOverwrite(saveName) {
+		this.setState({
+			action: '/updateGame',
+			inputs: [
+				{
+					type: 'text',
+					name: 'saveName',
+					placeholder: saveName,
+				}
+			],
+			message: `Click save to overwrite ${saveName}`
+		});
 
+		this.overwrite = saveName;
 	}
 
 	afterRender() {
@@ -65,7 +83,7 @@ export default class SetSecret extends PostForm {
 		characterToSave.scene = null;
 		let args = {
 			character : characterToSave,
-			saveName : this.postData.saveName
+			saveName : this.overwrite ? this.overwrite : this.postData.saveName
 		};
 		let game = new GameObject(args);
 		// console.log(game);
@@ -74,16 +92,9 @@ export default class SetSecret extends PostForm {
 
 	afterSubmit(response) {
 		// console.log(response);
-		let { player } = this;
-
-		if (!this.overwrite) {
-			player.games.push(response);
-		}
-
-		GameState.set('player', player);
+		GameState.set('player', response);
 
 		this.On.trigger('setView', 'pause');
-
 	}
 
 

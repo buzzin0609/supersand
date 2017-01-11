@@ -117,10 +117,21 @@ app.post('/saveGame|updateGame', urlEncode, async (function(req, res) {
 	let player = await (PlayerModel.findOne({ _id : body.playerId }));
 
 	if (/save/i.test(req.path)) {
+		if (player.games.includes(game)) {
+			res.status(403).end('Save failed. Game already exists');
+			return;
+		}
 		player.games.push(game);
+	} else if (/update/i.test(req.path)) {
+		player.games = player.games.map(oldGame => {
+			if (game.saveName === oldGame.saveName) {
+				console.log('updating game', game, oldGame);
+				return game;
+			}
+			return oldGame;
+		});
 	}
 
-	await (player.save());
 
-	res.json(game);
+	res.json(await (player.save()));
 }));
