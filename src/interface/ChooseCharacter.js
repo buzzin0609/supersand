@@ -10,10 +10,10 @@ class ChooseCharacter extends SuperComponent {
 		super(props);
 
 		this.characters = [
-			{
-				name : 'Vegeta',
-				profilePic : 'veg-port.png'
-			},
+			// {
+			// 	name : 'Vegeta',
+			// 	profilePic : 'veg-port.png'
+			// },
 			PreGoku()
 		];
 	}
