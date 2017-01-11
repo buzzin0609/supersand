@@ -125,7 +125,6 @@ app.post('/saveGame|updateGame', urlEncode, async (function(req, res) {
 	} else if (/update/i.test(req.path)) {
 		player.games = player.games.map(oldGame => {
 			if (game.saveName === oldGame.saveName) {
-				console.log('updating game', game, oldGame);
 				return game;
 			}
 			return oldGame;
