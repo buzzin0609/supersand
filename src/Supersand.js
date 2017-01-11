@@ -3,6 +3,8 @@ import SuperComponent from './shared/SuperComponent';
 import Interface from './interface/Interface';
 import PreGame from './pregame/PreGame';
 import Game from './game/Game';
+import './events/GlobalEvents';
+
 
 var GameState = require('./shared/GameState');
 // console.log(GameState);

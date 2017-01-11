@@ -9,6 +9,9 @@ var Singleton = (function() {
 
 			this.callbacks = [];
 			this.raf = false;
+			this.running = false;
+			this.clear.bind(this);
+			this.start.bind(this);
 
 			return Instance;
 		}
@@ -33,10 +36,12 @@ var Singleton = (function() {
 
 		start() {
 			this.raf = requestAnimationFrame(this.loop.bind(this));
+			this.running = true;
 		}
 
 		stop() {
 			cancelAnimationFrame(this.raf);
+			this.running = false;
 		}
 
 		loop() {

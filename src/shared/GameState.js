@@ -1,4 +1,4 @@
-var _ = require('./Private');
+import _  from './Private';
 
 var GameState = (function() {
 	var Instance = false;
@@ -15,7 +15,8 @@ var GameState = (function() {
 			_.set(this, privateProperties);
 
 			this.events = {};
-
+			this.start.bind(this);
+			this.stop.bind(this);
 			return Instance;
 		}
 
