@@ -35,7 +35,7 @@ var KeyboardActor = (function() {
 			this.pressed = [];
 			this.previous = false;
 			this.initialised = Date.now();
-			this.events.call(this);
+			this.events.bind(this);
 
 		}
 
@@ -63,7 +63,7 @@ var KeyboardActor = (function() {
 
 		keyup(e) {
 			this.direction = directions[e.key];
-			console.log('triggering keyup');
+			// console.log('triggering keyup', this);
 			if (this.direction) {
 				this.active[this.direction] = false;
 				this.pressed = this.pressed.filter(key => key !== this.direction);
@@ -77,8 +77,8 @@ var KeyboardActor = (function() {
 
 		setSrc() {
 			if (this.pressed[0]) {
-				console.log('set src', this);
 				var src = this.srcLocations[this.pressed[0]];
+				// console.log('set src', this);
 				this.current.y = src * this.height;
 				this.current.x = 0;
 				this.current.frames = this.frames[src];
@@ -149,7 +149,7 @@ var KeyboardActor = (function() {
 				if (Collisionable.detect(this.position, obstacles[i])) {
 
 					let side = Collisionable.detectSide(this.previous, obstacles[i]);
-					console.log(side);
+					// console.log(side);
 					if (side === 'up' || side === 'down') {
 						this.position.y = this.previous.y;
 					}

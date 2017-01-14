@@ -3,6 +3,7 @@ import SuperComponent from '../shared/SuperComponent';
 var GameState = require('../shared/GameState');
 import Btn from './Btn';
 import PreGoku from '../pregame/PreGoku';
+import Vegeta from '../Vegeta/Vegeta';
 
 class ChooseCharacter extends SuperComponent {
 
@@ -14,6 +15,7 @@ class ChooseCharacter extends SuperComponent {
 			// 	name : 'Vegeta',
 			// 	profilePic : 'veg-port.png'
 			// },
+			Vegeta(),
 			PreGoku()
 		];
 	}

@@ -2,24 +2,20 @@ function numberArray(len, value) {
 	return Array(len).fill(value);
 }
 
-function build(len, ticksArr) {
-	var arr = [];
-
-	var currentLen = ticksArr[0];
-	for (var i = 0; i < len; i++) {
-		currentLen = ticksArr[i] ? ticksArr[i] : ticksArr[0];
-		arr = arr.concat(numberArray(currentLen, i));
+function build(ticksArr) {
+	let arr = [];
+	let i = 0;
+	let len = ticksArr.length;
+	for (; i < len; i++) {
+		arr = arr.concat(numberArray(parseInt(ticksArr[i], 10), i));
 	}
-	return arr.sort();
+	return arr;
 }
 
 function buildFrameArray(arr) {
 	var newArr = [];
 	arr.forEach(str => {
-		var args = str.split(',');
-		var len = parseInt(args.shift(), 10);
-		var ticksArr = args.map(arg => parseInt(arg, 10));
-		newArr.push(build(len, ticksArr));
+		newArr.push(build(str.split(',')));
 	});
 	return newArr;
 }

@@ -77,11 +77,11 @@ class Scene extends SuperComponent {
 	}
 
 	addActors() {
-		console.log(this.props.actors, 'actors');
+		// console.log(this.props.actors, 'actors');
 		this.props.actors.forEach(actor => {
 			actor.addScene(this);
 			GameLoop.register(actor.render.bind(actor));
-
+			actor.events();
 		});
 	}
 
@@ -134,6 +134,7 @@ class Scene extends SuperComponent {
 
 	removeActors() {
 		this.props.actors.forEach(actor => {
+			// console.log('unregistering actor', actor);
 			GameLoop.unregister(actor.render.bind(actor)); actor.unMount();
 		});
 	}

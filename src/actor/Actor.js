@@ -67,7 +67,7 @@ class Actor {
 	}
 
 	clear() {
-		this.ctx.clearRect(this.position.x - this.width, this.position.y - this.height, this.width * 2, this.height * 3);
+		this.ctx.clearRect(this.position.x - this.width, this.position.y - this.height, this.width * 3, this.height * 3);
 	}
 
 	render() {
