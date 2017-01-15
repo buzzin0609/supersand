@@ -8,6 +8,7 @@ import GameInterface from '../game/GameInterface';
 import NewGame from './NewGame';
 import SetSecret from './SetSecret';
 import LoadGame from './LoadGame';
+import BeforeSave from './BeforeSave';
 import SaveGame from './SaveGame';
 import ForgotPassword from './ForgotPassword';
 import Pause from './Pause';
@@ -81,6 +82,9 @@ class Interface extends SuperComponent {
 				break;
 			case 'load':
 				content = <LoadGame />;
+				break;
+			case 'beforeSave':
+				content = <BeforeSave />;
 				break;
 			case 'save':
 				content = <SaveGame />;

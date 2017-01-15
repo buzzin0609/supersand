@@ -5,13 +5,13 @@ import Utils from '../utils/utils';
 import _ from '../shared/Private';
 import Collisionable from '../collisions/Collisionable';
 
-var required = [
+const required = [
 	'srcLocations',
 	'attributes'
 ];
 
-var KeyboardActor = (function() {
-	var directions = {
+const KeyboardActor = (function() {
+	const directions = {
 		'ArrowUp' : 'up',
 		'ArrowRight' : 'right',
 		'ArrowDown' : 'down',
@@ -55,7 +55,7 @@ var KeyboardActor = (function() {
 				this.active[this.direction] = true;
 				if (!this.pressed.includes(this.direction)) {
 					this.pressed.unshift(this.direction);
-					this.setSrc();
+					this.setMoveSrc();
 				}
 			}
 
@@ -63,11 +63,11 @@ var KeyboardActor = (function() {
 
 		keyup(e) {
 			this.direction = directions[e.key];
-			// console.log('triggering keyup', this);
+
 			if (this.direction) {
 				this.active[this.direction] = false;
 				this.pressed = this.pressed.filter(key => key !== this.direction);
-				this.setSrc();
+				this.setMoveSrc();
 			}
 		}
 
@@ -75,18 +75,24 @@ var KeyboardActor = (function() {
 			return directions[value];
 		}
 
-		setSrc() {
+		setMoveSrc() {
 			if (this.pressed[0]) {
-				var src = this.srcLocations[this.pressed[0]];
+				this.setSrc(this.srcLocations[this.pressed[0]]);
 				// console.log('set src', this);
-				this.current.y = src * this.height;
-				this.current.x = 0;
-				this.current.frames = this.frames[src];
+
 			}
 		}
 
+		setSrc(src) {
+			console.log('setting src');
+			this.frameIndex = 0;
+			this.current.y = src * this.height;
+			this.current.x = 0;
+			this.current.frames = this.frames[src];
+		}
+
 		move() {
-			var speed = this.attributes.speed;
+			let speed = this.attributes.speed;
 			this.previous = Object.assign({}, this.position);
 
 			if (this.active.up) {
@@ -110,10 +116,10 @@ var KeyboardActor = (function() {
 		}
 
 		handleBoundaries() {
-			var width = this.scene.canvas.width;
-			var height = this.scene.canvas.height;
-			var x = this.position.x;
-			var y = this.position.y;
+			let width = this.scene.canvas.width;
+			let height = this.scene.canvas.height;
+			let x = this.position.x;
+			let y = this.position.y;
 			if (x > width - this.width) {
 				x = width - this.width;
 			}

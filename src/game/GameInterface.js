@@ -6,7 +6,7 @@ export default class GameInterface extends SuperComponent {
 	render() {
 		return (
 			<div className="game-interface">
-				<Btn setView="pause">Pause</Btn>
+				<Btn setView="pause">Menu</Btn>
 			</div>
 		)
 	}

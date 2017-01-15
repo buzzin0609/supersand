@@ -71,16 +71,17 @@ class Actor {
 	}
 
 	render() {
-		if (this.beforeRender) {
-			this.beforeRender();
-		}
+		this.beforeRender();
 		this.clear();
+		this.frameIndex = (this.frameIndex + 1) % this.current.frames.length;
 
 		this.ctx.drawImage(this.img, this.current.x, this.current.y, this.width, this.height, this.position.x, this.position.y, this.width, this.height);
 
-		this.frameIndex = (this.frameIndex + 1) % this.current.frames.length;
 		this.current.x = this.current.frames[this.frameIndex] * this.width;
+
 	}
+
+	beforeRender() {}
 }
 
 module.exports = Actor;

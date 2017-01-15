@@ -2,7 +2,7 @@ import React from 'react';
 import SuperComponent from '../shared/SuperComponent';
 var GameState = require('../shared/GameState');
 import Btn from './Btn';
-import PreGoku from '../pregame/PreGoku';
+import Goku from '../Goku/Goku';
 import Vegeta from '../Vegeta/Vegeta';
 
 class ChooseCharacter extends SuperComponent {
@@ -11,12 +11,8 @@ class ChooseCharacter extends SuperComponent {
 		super(props);
 
 		this.characters = [
-			// {
-			// 	name : 'Vegeta',
-			// 	profilePic : 'veg-port.png'
-			// },
 			Vegeta(),
-			PreGoku()
+			Goku()
 		];
 	}
 

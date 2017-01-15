@@ -1,9 +1,26 @@
-import KeyboardActor from '../actor/KeyboardActor';
+import GameActor from '../actor/GameActor';
 
 const Vegeta = function() {
-	return new KeyboardActor({
+
+	class Vegeta extends GameActor {
+		setAttack() {
+			this.startAttack = true;
+			this.width += 6;
+			this.setSrc(this.srcLocations[this.attackType][this.facing]);
+			this.currentAttackLen = this.current.frames.length;
+		}
+
+		resetAttack() {
+			this.resetAttackState();
+			this.width -= 6;
+			this.setSrc(this.srcLocations[this.facing]);
+		}
+	}
+
+
+	return new Vegeta({
 		name : 'Vegeta',
-		imgUrl : 'vegeta-walking.png',
+		imgUrl : 'vegeta-sheet-02.png',
 		profilePic : 'veg-port.png',
 		attributes : {
 			'speed' : 3
@@ -13,7 +30,15 @@ const Vegeta = function() {
 			'2,8,8,8,8,8,8,8,8,2',
 			'2,8,8,8,8,8,8,8,8,2',
 			'2,8,8,8,8,8,8,8,2',
-			'40,8'
+			'40,8',
+			'3,5,7',
+			'3,5,7',
+			'3,5,5,7',
+			'3,5,5,7',
+			'3,5,5,7',
+			'3,5,5,7',
+			'3,5,7',
+			'3,5,7'
 		],
 		frameLen : 8,
 		frameTicks : 10,
@@ -26,7 +51,13 @@ const Vegeta = function() {
 			'right' : 1,
 			'down' : 0,
 			'left' : 2,
-			'normal' : 4
+			'normal' : 4,
+			'punch' : {
+				'up' : 9,
+				'right' : 5,
+				'down' : 7,
+				'left' : 11
+			}
 		}
 	});
 };

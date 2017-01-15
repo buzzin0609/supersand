@@ -15,7 +15,7 @@ export default class GameInterface extends SuperComponent {
 			<div>
 				<h2>Game Paused</h2>
 				<Btn setView="game" clickHandlers={ [ GameLoop.start.bind(GameLoop) ] }>Resume</Btn>
-				<Btn setView="save">Save Game</Btn>
+				<Btn setView="beforeSave">Save Game</Btn>
 				<Btn setView="main" clickHandlers={ [ GameState.stop.bind(GameState) ] }>Main Menu</Btn>
 			</div>
 		)

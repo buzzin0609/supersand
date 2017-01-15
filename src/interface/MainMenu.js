@@ -9,7 +9,7 @@ class MainMenu extends SuperComponent {
 			<div>
 				<h1 className="title">The Legend of the SuperSand Saiyan!</h1>
 				<Btn setView="controls">Controls</Btn>
-				<Btn setView="new">New Game</Btn>
+				<Btn setView="choose">New Game</Btn>
 				<Btn setView="load">Load Game</Btn>
 			</div>
 		);
