@@ -1,7 +1,12 @@
 
 import GameActor from '../actor/GameActor';
 
-const Goku = function() {
+const Goku = function(args = false) {
+
+	if (args) {
+		return new GameActor(args);
+	}
+
 	return new GameActor({
 		name : 'Goku',
 		imgUrl : 'goku-normal-sheet.png',
@@ -15,7 +20,7 @@ const Goku = function() {
 			'3,20,20',
 			'3,20,20',
 			'3,20,20',
-			'5,5,5',
+			'5,5,5,5',
 			'5,5,5',
 			'5,5,5',
 			'5,5,5',

@@ -1,23 +1,23 @@
 import GameActor from '../actor/GameActor';
 
-const Vegeta = function() {
+const Vegeta = function(args = false) {
 
 	class Vegeta extends GameActor {
 		setAttack() {
-			this.startAttack = true;
+			super.setAttack();
 			this.width += 6;
-			this.setSrc(this.srcLocations[this.attackType][this.facing]);
-			this.currentAttackLen = this.current.frames.length;
 		}
 
 		resetAttack() {
-			this.resetAttackState();
+			super.resetAttack();
 			this.width -= 6;
-			this.setSrc(this.srcLocations[this.facing]);
 		}
 	}
 
-
+	if (args) {
+		return new Vegeta(args);
+	}
+	
 	return new Vegeta({
 		name : 'Vegeta',
 		imgUrl : 'vegeta-sheet-02.png',

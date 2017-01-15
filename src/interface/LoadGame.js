@@ -2,7 +2,10 @@ import React from 'react';
 import Login from './Login';
 import GameState from '../shared/GameState';
 import Btn from './Btn';
-import KeyboardActor from '../actor/KeyboardActor';
+
+const Characters = {};
+
+// GameState.get('characters').forEach(Character => Characters[Character.name] = Character);
 
 export default class LoadGame extends Login {
 	constructor(props) {
@@ -16,6 +19,11 @@ export default class LoadGame extends Login {
 	}
 
 	componentWillMount() {
+		GameState.get('characters').forEach(Character => {
+			let C = Character();
+			Characters[C.name] = Character;
+		});
+
 		let { player } = this.state;
 
 		if (player) {
@@ -60,8 +68,8 @@ export default class LoadGame extends Login {
 	}
 
 	handleLoadGame(game) {
-		console.log(game.character, 'saved character');
-		let character = new KeyboardActor(game.character);
+		console.log(game.character, 'saved character', Characters);
+		let character = Characters[game.character.name](game.character);
 		game.character = character;
 		GameState.character = character;
 		GameState.set('stage', game.stage);

@@ -14,6 +14,15 @@ import ForgotPassword from './ForgotPassword';
 import Pause from './Pause';
 // var GameState = require('../shared/GameState');
 
+import Goku from '../Goku/Goku';
+import Vegeta from '../Vegeta/Vegeta';
+import Chad from '../Chad/Chad';
+
+GameState.set('characters', [
+	Vegeta,
+	Goku,
+	Chad
+]);
 
 class Interface extends SuperComponent {
 	constructor(props) {

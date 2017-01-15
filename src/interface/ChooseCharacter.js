@@ -2,18 +2,15 @@ import React from 'react';
 import SuperComponent from '../shared/SuperComponent';
 var GameState = require('../shared/GameState');
 import Btn from './Btn';
-import Goku from '../Goku/Goku';
-import Vegeta from '../Vegeta/Vegeta';
+
 
 class ChooseCharacter extends SuperComponent {
 
 	constructor(props) {
 		super(props);
 
-		this.characters = [
-			Vegeta(),
-			Goku()
-		];
+		this.characters = GameState.get('characters');
+
 	}
 
 	setCharacter(Character) {
@@ -25,6 +22,7 @@ class ChooseCharacter extends SuperComponent {
 	outputCharacters() {
 		var jsx = [];
 		this.characters.forEach(character => {
+			character = character();
 			jsx.push(
 				<article key={character.name} className="character" onClick={ this.setCharacter.bind(this, character) }>
 					<img src={ 'img/' + character.profilePic } alt={`Choose ${character.name}`}/>

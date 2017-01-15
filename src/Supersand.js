@@ -4,9 +4,9 @@ import Interface from './interface/Interface';
 import PreGame from './pregame/PreGame';
 import Game from './game/Game';
 import './events/GlobalEvents';
+import GameState from './shared/GameState';
 
 
-var GameState = require('./shared/GameState');
 // console.log(GameState);
 
 class Supersand extends SuperComponent {
@@ -18,6 +18,7 @@ class Supersand extends SuperComponent {
 		};
 		GameState.on('start', this.onStart.bind(this));
 		GameState.on('stop', this.onStop.bind(this));
+
 	}
 
 	get content() {
