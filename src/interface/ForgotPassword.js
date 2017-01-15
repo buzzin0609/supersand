@@ -1,4 +1,6 @@
+import React from 'react';
 import PostForm from './PostForm';
+import Btn from './Btn';
 
 export default class ForgotPassword extends PostForm {
 	constructor(props) {
@@ -56,5 +58,7 @@ export default class ForgotPassword extends PostForm {
 		});
 	}
 
-
+	afterRender() {
+		return <Btn setView="main">Main Menu</Btn>;
+	}
 }

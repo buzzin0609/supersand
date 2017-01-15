@@ -32,8 +32,20 @@ export default class SetSecret extends PostForm {
 
 	afterSubmit(response) {
 		console.log(response);
-		this.On.trigger('setView', 'choose');
+		if (GameState.hasStarted) {
+			this.On.trigger('setView', 'save');
+		} else {
+			this.On.trigger('setView', 'choose');
+		}
 
+	}
+
+	onError(e) {
+		super.onError(e);
+		this.setState({
+			'submitText' : 'set secret',
+			'error' : 'There was an error setting your secret, please try again'
+		});
 	}
 
 

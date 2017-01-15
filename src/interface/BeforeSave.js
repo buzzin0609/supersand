@@ -10,7 +10,7 @@ export default class BeforeSave extends Login {
 
 	afterSubmit(response) {
 		super.afterSubmit(response);
-		if (response.isNew) {
+		if (response.isNew || !response.player.secret || !response.player.secret.question || response.player.secret.question === 'undefined') {
 			this.On.trigger('setView', 'setSecret');
 		} else {
 			this.On.trigger('setView', 'save');
