@@ -10,7 +10,7 @@ class Controls extends SuperComponent {
 			<div>
 				<h2>Controls</h2>
 				<p>Arrow keys to move</p>
-				<p>Press F to hit</p>
+				<p>Press A, S, D, or F to hit</p>
 				<p>Press G to transform</p>
 				<Btn setView="main">Main Menu</Btn>
 			</div>

@@ -58,7 +58,7 @@ const Chad = function(args = false) {
 			'down' : 1,
 			'left' : 3,
 			'normal' : 0,
-			'punch' : {
+			'attack' : {
 				'up' : 5,
 				'right' : 5,
 				'down' : 5,

@@ -6,18 +6,25 @@ import Utils from '../utils/utils';
 // ];
 
 const requiredSrcLocations = [
-	'punch'
+	'attack'
 ];
 
 const attacks = {
-	'd' : 'punch'
+	'a' : 'attack',
+	's' : 'attack2',
+	'd' : 'attack3',
+	'f' : 'attack4'
 };
+
 
 class GameActor extends KeyboardActor {
 	constructor(args) {
 		Utils.requiredProps(requiredSrcLocations, args.srcLocations);
 		super(args);
 		this.facing = 'down';
+		this.comboState = 1;
+		this.comboQueued = false;
+		this.attacks = args.attacks || attacks;
 		this.resetAttackState();
 	}
 
@@ -27,6 +34,9 @@ class GameActor extends KeyboardActor {
 		this.attackType = '';
 		this.attackCount = 0;
 		this.currentAttackLen = 0;
+		if (!this.comboQueued) {
+			this.comboState = 1;
+		}
 	}
 
 	setMoveSrc() {
@@ -44,9 +54,10 @@ class GameActor extends KeyboardActor {
 			this.facing = this.pressed[0];
 		}
 
+		let attack = attacks[e.key];
 		if (!this.attacking) {
-			this.attackType = attacks[e.key];
-			if (this.attackType) {
+			this.attackType = attack;
+			if (attack) {
 				this.attacking = true;
 			}
 		}
@@ -59,13 +70,23 @@ class GameActor extends KeyboardActor {
 		}
 
 		if (this.attacking) {
-			this[this.attackType]();
+			this.attack();
 		}
 
 		if (!this.pressed[0] && !this.attacking) {
 			this.current.x = 0;
 		}
 
+	}
+
+	attack() {
+		if (!this.startAttack) {
+			this.setAttack();
+		}
+		this.attackCount++;
+		if (this.attackCount >= this.currentAttackLen) {
+			this.resetAttack();
+		}
 	}
 
 	punch() {

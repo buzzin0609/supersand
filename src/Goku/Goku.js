@@ -38,7 +38,7 @@ const Goku = function(args = false) {
 			'down' : 1,
 			'left' : 3,
 			'normal' : 0,
-			'punch' : {
+			'attack' : {
 				'up' : 7,
 				'right' : 9,
 				'down' : 6,
