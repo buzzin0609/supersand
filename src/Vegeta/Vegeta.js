@@ -4,8 +4,8 @@ const Vegeta = function(args = false) {
 	let normalWidth = 18;
 	let attackWidths = {
 		attack : normalWidth + 6,
-		attack3 : normalWidth + 9,
-		attack4 : 29
+		attack3 : normalWidth + 12,
+		attack4 : 31
 	};
 	class Vegeta extends GameActor {
 		setAttack() {
