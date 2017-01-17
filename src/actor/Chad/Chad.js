@@ -1,4 +1,4 @@
-import GameActor from '../actor/GameActor';
+import GameActor from '../GameActor';
 
 const Chad = function(args = false) {
 	let normalWidth = 45;

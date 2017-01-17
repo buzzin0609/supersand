@@ -14,9 +14,9 @@ import ForgotPassword from './ForgotPassword';
 import Pause from './Pause';
 // var GameState = require('../shared/GameState');
 
-import Goku from '../Goku/Goku';
-import Vegeta from '../Vegeta/Vegeta';
-import Chad from '../Chad/Chad';
+import Goku from '../actor/Goku/Goku';
+import Vegeta from '../actor/Vegeta/Vegeta';
+import Chad from '../actor/Chad/Chad';
 
 GameState.set('characters', [
 	Vegeta,
