@@ -7,9 +7,7 @@ import Quadrant from '../collisions/Quadrant';
 import Obstacle from '../collisions/Obstacle';
 import GameState from '../shared/GameState';
 
-const required = [
-	'target'
-];
+const required = [];
 
 class Scene extends SuperComponent {
 
@@ -17,7 +15,6 @@ class Scene extends SuperComponent {
 		Utils.requiredProps(required, props);
 		super(props);
 
-		this.sceneEl = false;
 		this.canvas = false;
 		this.quadrants = this.obstacles = [];
 		this.startPosition = this.props.startPosition || {
@@ -32,23 +29,16 @@ class Scene extends SuperComponent {
 	}
 
 	componentDidMount() {
-
-		this.elPromise = Utils.isImg(document.querySelector(this.props.target));
-
-		this.elPromise.then(el => {
-			this.sceneEl = el;
-			this.init();
-
-		});
+		this.init();
 	}
 
 	init() {
 		this.registerCanvas();
-		this.setDimensions();
-		this.positionCanvas();
 		this.addActors();
 		this.handleObstacles();
-		Utils.debounce.on('resize', [this.setDimensions.bind(this), this.positionCanvas.bind(this)]);
+		this.add
+		this.scaleCanvas();
+		Utils.debounce.on('resize', this.scaleCanvas.bind(this));
 	}
 
 	registerCanvas() {
@@ -56,32 +46,32 @@ class Scene extends SuperComponent {
 		this.ctx = this.canvas.getContext('2d');
 	}
 
-	setDimensions() {
-
-		let target = this.sceneEl;
-
-		this.width = this.canvas.width = Math.floor(target.offsetWidth);
-		this.height = this.canvas.height = Math.floor(target.offsetHeight);
-	}
-
-	positionCanvas() {
-		let el = this.sceneEl;
-		let rect = el.getBoundingClientRect();
-		let diff = {
-			width : (rect.width - this.canvas.width) / 2,
-			height : (rect.height - this.canvas.height) / 2
-		};
-		this.top = rect.top + diff.height;
-		this.left = rect.left + diff.height;
-		this.canvas.style.cssText = `position: absolute; top: ${this.top}px; left: ${this.left}px`;
-	}
-
 	addActors() {
-		// console.log(this.props.actors, 'actors');
+		if (this.props.enemies) {
+			this.props.enemies.forEach(enemy => {
+				let enemyScene = Object.assign({}, this);
+				let canvas = document.createElement('canvas');
+				canvas.className = 'scene';
+				canvas.width = this.canvas.width;
+				canvas.height = this.canvas.height;
+
+				enemyScene.canvas = canvas;
+				this.canvas.parentElement.insertAdjacentElement('afterbegin', enemyScene.canvas);
+				enemy.addScene(enemyScene);
+				GameLoop.register(enemy.render.bind(enemy));
+				if (enemy.events) {
+					enemy.events();
+				}
+
+			});
+		}
 		this.props.actors.forEach(actor => {
 			actor.addScene(this);
+			actor.addEnemies(this.props.enemies);
 			GameLoop.register(actor.render.bind(actor));
-			actor.events();
+			if (actor.events) {
+				actor.events();
+			}
 		});
 	}
 
@@ -121,11 +111,23 @@ class Scene extends SuperComponent {
 		}
 	}
 
+	scaleCanvas() {
+		let scaleX = (window.innerWidth - 20) / this.canvas.width;
+		let scaleY = (window.innerHeight - 20) / this.canvas.height;
+		let parent = this.canvas.parentElement;
+		let scaleToFit = Utils.toFixed(Math.min(scaleX, scaleY), 4);
+		if (scaleToFit > 1) {
+			scaleToFit = 1;
+		}
+
+		parent.style.transform = `scale3d(${scaleToFit}, ${scaleToFit}, ${scaleToFit}) ${(parent.id === 'game-scene-wrapper' && 'translate3d(-50%, -50%, 0)')}`;
+	}
+
 	componentWillUnmount() {
 		Scenes.unregister(this.props.id);
 		this.removeObstacles();
 		this.removeActors();
-		Utils.debounce.off('resize', [this.setDimensions, this.positionCanvas]);
+		Utils.debounce.off('resize', this.scaleCanvas.bind(this));
 	}
 
 	removeObstacles() {
@@ -141,7 +143,13 @@ class Scene extends SuperComponent {
 
 	render() {
 		return (
-			<canvas id={this.props.id || ''} className="scene"></canvas>
+			<div id={this.props.id + '-wrapper' || ''} className="scene-wrapper" style={{width: `${this.props.width}px`, height: `${this.props.height}px`}}>
+				{
+					this.props.bg &&
+					<img id={this.props.bgId} width={this.props.width} height={this.props.height} src={this.props.bg} className="bg"/>
+				}
+				<canvas id={this.props.id || ''} width={this.props.width} height={this.props.height} className="scene"></canvas>
+			</div>
 		)
 	}
 }

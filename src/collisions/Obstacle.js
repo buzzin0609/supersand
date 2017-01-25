@@ -21,7 +21,7 @@ var Factory = (function() {
 				height: args.height
 			};
 			this.setup();
-			Utils.debounce.on('resize', this.setup.bind(this));
+			// Utils.debounce.on('resize', this.setup.bind(this));
 			GameLoop.register(this.render.bind(this));
 		}
 

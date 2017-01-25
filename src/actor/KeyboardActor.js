@@ -1,14 +1,6 @@
 
-import Actor from './Actor';
+import MovingActor from './MovingActor';
 import Events from '../events/Events';
-import Utils from '../utils/utils';
-import _ from '../shared/Private';
-import Collisionable from '../collisions/Collisionable';
-
-const required = [
-	'srcLocations',
-	'attributes'
-];
 
 const KeyboardActor = (function() {
 	const directions = {
@@ -18,23 +10,9 @@ const KeyboardActor = (function() {
 		'ArrowLeft' : 'left'
 	};
 
-
-	return class KeyboardActor extends Actor {
+	return class KeyboardActor extends MovingActor {
 		constructor(args) {
-			Utils.requiredProps(required, args);
 			super(args);
-			this.attributes = args.attributes;
-			this.active = {
-				up : false,
-				right : false,
-				down : false,
-				left : false
-			};
-			this.direction = false;
-			this.srcLocations = args.srcLocations;
-			this.pressed = [];
-			this.previous = false;
-			this.initialised = Date.now();
 			this.events.bind(this);
 
 		}
@@ -58,7 +36,6 @@ const KeyboardActor = (function() {
 					this.setMoveSrc();
 				}
 			}
-
 		}
 
 		keyup(e) {
@@ -73,107 +50,6 @@ const KeyboardActor = (function() {
 
 		getDirection(value) {
 			return directions[value];
-		}
-
-		setMoveSrc() {
-			if (this.pressed[0]) {
-				this.setSrc(this.srcLocations[this.pressed[0]]);
-				// console.log('set src', this);
-
-			}
-		}
-
-		setSrc(src) {
-			console.log('setting src');
-			this.frameIndex = 0;
-			this.current.y = src * this.height;
-			this.current.x = 0;
-			this.current.frames = this.frames[src];
-		}
-
-		move() {
-			let speed = this.attributes.speed;
-			this.previous = Object.assign({}, this.position);
-
-			if (this.active.up) {
-				this.position.y -= speed;
-			}
-
-			if (this.active.right) {
-				this.position.x += speed;
-			}
-
-			if (this.active.down) {
-				this.position.y += speed;
-			}
-
-			if (this.active.left) {
-				this.position.x -= speed;
-			}
-
-			this.handleBoundaries();
-			this.handleQuadrants();
-		}
-
-		handleBoundaries() {
-			let width = this.scene.canvas.width;
-			let height = this.scene.canvas.height;
-			let x = this.position.x;
-			let y = this.position.y;
-			if (x > width - this.width) {
-				x = width - this.width;
-			}
-			if (x < 0) {
-				x = 0;
-			}
-			if (y > height - this.height) {
-				y = height - this.height;
-			}
-			if (y < 0) {
-				y = 0;
-			}
-
-			this.position.x = x;
-			this.position.y = y;
-		}
-
-		handleQuadrants() {
-			let quadrants = this.scene.quadrants;
-
-			for (let i = 0, l = quadrants.length; i < l; i++) {
-				if (Collisionable.detect(this.position, quadrants[i])) {
-					// console.log('in quadrant', quadrants[i]);
-					this.handleObstacles(quadrants[i]);
-					// break;
-				}
-			}
-		}
-
-		handleObstacles(quadrant) {
-			let obstacles = quadrant.obstacles;
-			for (let i = 0, l = obstacles.length; i < l; i++) {
-				if (Collisionable.detect(this.position, obstacles[i])) {
-
-					let side = Collisionable.detectSide(this.previous, obstacles[i]);
-					// console.log(side);
-					if (side === 'up' || side === 'down') {
-						this.position.y = this.previous.y;
-					}
-
-					if (side === 'left' || side === 'right') {
-						this.position.x = this.previous.x;
-					}
-
-				}
-			}
-		}
-
-		beforeRender() {
-			if (this.pressed[0]) {
-				this.move();
-			} else {
-				this.current.x = 0;
-			}
 		}
 
 	};

@@ -1,19 +1,17 @@
-#pre-game {
+
+#pre-game-scene-wrapper {
+	bottom: 0;
 	background-color: #58A8F8;
-	height: 100%;
+	height: 640px;
+	position: absolute;
+	transform-origin: 100% 100%;
+	right: 0;
+	width: 720px;
+}
+
+#kame-house, #pre-game-scene {
+	display: block;
 	left: 0;
 	position: absolute;
 	top: 0;
-	width: 100%;
-}
-
-#kame-house {
-	bottom: 10%;
-	display: block;
-	height: auto;
-	max-height: 70%;
-	max-width: 80%;
-	position: absolute;
-	right: 10%;
-	width: auto;
 }

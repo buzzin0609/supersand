@@ -38,6 +38,13 @@ var GameState = (function() {
 			data[name] = value;
 		}
 
+		addTo(name, value) {
+			if (!data[name]) {
+				data[name] = [];
+			}
+			data[name].push(value);
+		}
+
 		start() {
 			console.log('start triggered');
 			_.get(this).started = true;

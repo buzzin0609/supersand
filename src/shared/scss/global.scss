@@ -2,6 +2,15 @@ $restrict : 1280px;
 
 html {
 	font-family: 'Antenna', sans-serif;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background-color: #58A8F8;
+	height: 100%;
+	overflow: hidden;
+	width: 100%;
 }
 
 .title, h1, h2, h3, h4, h5, .btn {

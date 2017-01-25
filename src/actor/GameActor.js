@@ -1,6 +1,6 @@
 import KeyboardActor from './KeyboardActor';
 import Utils from '../utils/utils';
-
+import Collisionable from '../collisions/Collisionable';
 // const required = [
 //
 // ];
@@ -25,6 +25,7 @@ class GameActor extends KeyboardActor {
 		this.comboState = 1;
 		this.comboQueued = false;
 		this.attacks = args.attacks || attacks;
+		this.level = args.level || 1;
 		this.resetAttackState();
 	}
 
@@ -109,6 +110,27 @@ class GameActor extends KeyboardActor {
 	resetAttack() {
 		this.resetAttackState();
 		this.setSrc(this.srcLocations[this.facing]);
+	}
+
+	handleState() {
+		if (this.enemies) {
+			this.handleEnemies();
+		}
+	}
+
+	handleEnemies() {
+		let { enemies } = this;
+		let i = enemies.length;
+
+		while (--i >= 0) {
+			let enemy = enemies[i];
+			if (Collisionable.detect(this.position, enemy.pullArea)) {
+				enemy.isPulled = true;
+				console.log('collision with enemy');
+			} else if (enemy.isPulled) {
+				enemy.isPulled = false;
+			}
+		}
 	}
 
 }

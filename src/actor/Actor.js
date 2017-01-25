@@ -1,4 +1,3 @@
-import Characters from '../shared/Characters';
 var buildFrameArray = require('./buildFrameArray');
 var Utils = require('../utils/utils');
 
@@ -22,6 +21,8 @@ class Actor {
 		this.frames = Array.isArray(args.frames[0]) ? args.frames : buildFrameArray(args.frames);
 		this.frameIndex = 0;
 
+		this.enemies = false;
+
 		this.width = args.width;
 		this.height = args.height;
 
@@ -41,12 +42,16 @@ class Actor {
 			y : 0
 		};
 
-		this.level = args.level || 1;
-
-		Characters.add(this);
+		this.attributes = args.attributes;
+		this.direction = false;
+		this.srcLocations = args.srcLocations;
+		this.initialised = Date.now();
 
 	}
 
+	addEnemies(enemies) {
+		this.enemies = enemies;
+	}
 
 	addScene(scene) {
 		this.scene = scene;
@@ -58,7 +63,7 @@ class Actor {
 		this.img.src = 'img/' + this.imgUrl;
 		this.setPosition();
 
-		Utils.debounce.on('resize', this.setPosition.bind(this));
+		// Utils.debounce.on('resize', this.setPosition.bind(this));
 	}
 
 	setPosition() {
@@ -67,14 +72,15 @@ class Actor {
 	}
 
 	clear() {
-		this.ctx.clearRect(this.position.x - this.width, this.position.y - this.height, this.width * 3, this.height * 3);
+		let box = this.attributes.speed * 5;
+		this.ctx.clearRect(this.position.x - box / 2, this.position.y - box / 2, this.width + box, this.height + box);
 	}
 
 	render() {
 		this.beforeRender();
+		this.handleState();
 		this.clear();
 		this.frameIndex = (this.frameIndex + 1) % this.current.frames.length;
-
 		this.ctx.drawImage(this.img, this.current.x, this.current.y, this.width, this.height, this.position.x, this.position.y, this.width, this.height);
 
 		this.current.x = this.current.frames[this.frameIndex] * this.width;
@@ -82,6 +88,7 @@ class Actor {
 	}
 
 	beforeRender() {}
+	handleState() {}
 }
 
 module.exports = Actor;

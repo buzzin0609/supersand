@@ -22,12 +22,11 @@ var Factory = (function() {
 			this.scene = scene;
 			this.index = sceneIndex;
 			this.setup();
-			Utils.debounce.on('resize', this.setup.bind(this));
 		}
 
 		setup() {
 			let canvas = this.scene.canvas;
-			let rows = this.qNum / 4;
+			let rows = Math.sqrt(this.qNum);
 			this.height = Math.floor(canvas.height / rows);
 			this.width = Math.floor(canvas.width / rows);
 			let rowIndex = this.index % rows;

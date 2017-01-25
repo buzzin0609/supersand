@@ -6,7 +6,15 @@ import Game from './game/Game';
 import './events/GlobalEvents';
 import GameState from './shared/GameState';
 
+import Goku from './actor/Goku/Goku';
+import Vegeta from './actor/Vegeta/Vegeta';
+import Chad from './actor/Chad/Chad';
 
+GameState.set('characters', [
+	Vegeta,
+	Goku,
+	Chad
+]);
 // console.log(GameState);
 
 class Supersand extends SuperComponent {
@@ -36,7 +44,6 @@ class Supersand extends SuperComponent {
 	}
 
 	onStop() {
-		console.log('triggering on stop');
 		this.content = <PreGame />;
 	}
 

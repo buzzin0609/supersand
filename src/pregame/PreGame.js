@@ -26,8 +26,16 @@ class PreGame extends SuperComponent {
 	render() {
 		return (
 			<div id="pre-game">
-				<img id="kame-house" data-scene-area="600 510" src="img/kame-house-map.png" alt="Kame House" className="bg"/>
-				<Scene id="pre-game-scene" actors={[PreGoku()]} obstacles={this.obstacles} target="#kame-house" />
+
+				<Scene
+					id="pre-game-scene" 
+					width="720" height="640"
+					actors={[PreGoku()]}
+					obstacles={this.obstacles}
+					target="#kame-house"
+					bg="img/kame-house-map.png"
+					bgId="kame-house"
+					/>
 			</div>
 		);
 	}
