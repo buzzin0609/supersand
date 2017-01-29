@@ -7,13 +7,17 @@ const Goon = function() {
 		imgUrl : 'enemies/enemy-master-sprite-sheet.png',
 		profilePic : 'gok-port-ss.png',
 		attributes : {
-			'speed' : 2
+			'speed' : Utils.toFixed(Utils.randomFloat(1,3), 2)
 		},
 		frames : [
 			'3,8,8,8,8,8',
 			'3,8,8,8,8,8',
 			'3,8,8,8,8,8',
-			'3,8,8,8,8,8'
+			'3,8,8,8,8,8',
+			'5,5,5,5',
+			'5,5,5,5',
+			'5,5,5,5',
+			'5,5,5,5'
 		],
 		width : 32,
 		height : 32,
@@ -26,10 +30,10 @@ const Goon = function() {
 			'left' : 2,
 			'normal' : 0,
 			'attack' : {
-				'up' : 7,
-				'right' : 9,
-				'down' : 6,
-				'left' : 8
+				'up' : 5,
+				'right' : 7,
+				'down' : 4,
+				'left' : 6
 			},
 			'attack2' : {
 				'up' : 20,

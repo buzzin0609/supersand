@@ -24,15 +24,36 @@ var Singleton = (function() {
 			}
 
 			if (main.y >= target.y + target.height) {
-				side = 'down';
+				side = 'up';
 			}
 
 			if (main.y + main.height <= target.y) {
-				side = 'up';
+				side = 'down';
 			}
 
 			return side;
 
+		}
+
+		getSides(main, target, offsetW, offsetH) {
+			let sides = [];
+			if (main.y > target.y + offsetH) {
+				sides.unshift('up');
+			}
+
+			if (main.y < target.y - offsetH) {
+				sides.unshift('down');
+			}
+
+			if (main.x > target.x + offsetW) {
+				sides.unshift('left');
+			}
+
+			if (main.x < target.x - offsetW) {
+				sides.unshift('right');
+			}
+
+			return sides;
 		}
 
 		detectX(object1, object2) {

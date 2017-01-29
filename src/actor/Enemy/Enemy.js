@@ -1,13 +1,20 @@
 import AutoActor from '../AutoActor';
 import GameState from '../../shared/GameState';
 import Collisionable from '../../collisions/Collisionable';
+import Utils from '../../utils/utils';
 
 export default class Enemy extends AutoActor {
 	constructor(name, args) {
 		super(name, args);
 		this.isPulled = false;
 		this.engaged = false;
-		this.fighting = false;
+		this.attacking = false;
+		this.attackDelay = Utils.random(50, 100);
+		this.attackLen = 0;
+		this.sides = [];
+		this.facing = false;
+		this.offsetW = Math.floor(this.width / 2);
+		this.offsetH = Math.floor(this.height / 4);
 	}
 
 	beforeRender() {
@@ -23,6 +30,7 @@ export default class Enemy extends AutoActor {
 				this.resetActive();
 				//this makes sure the patrol starts back from the beginning
 				this.path = 0;
+				this.resetX();
 			}
 			super.beforeRender();
 		}
@@ -42,64 +50,71 @@ export default class Enemy extends AutoActor {
 		};
 
 		if (!Collisionable.detect(position, battlePosition)) {
-			if (this.fighting) {
-				this.fighting = false;
+			if (this.attacking) {
+				this.attacking = false;
 			}
 			this.follow();
 		} else {
-			this.resetActive();
-			if (!this.fighting) {
-				this.fighting = true;
+
+			if (!this.facing) {
+				this.facing = this.direction;
 			}
+			this.resetActive();
+			this.attack();
 		}
 	}
 
 	follow() {
+
+		let sides = this.getSides();
+
+		if (sides.length) {
+			this.setY(this.srcLocations[sides[0]]);
+			this.facing = sides[0];
+		}
+
+		Object.keys(this.active).forEach(s => {
+			if (sides.includes(s)) {
+				this.active[s] = true;
+			} else {
+				this.active[s] = false;
+			}
+		});
+	}
+
+	getSides() {
 		let characterPosition = GameState.character.position;
 		let { position } = this;
-		let offsetW = Math.floor(this.width / 6);
-		let offsetH = this.height / 4;
 
-		if (position.y > characterPosition.y + offsetH) {
-			this.setY(this.srcLocations.up);
-			this.active.up = true;
-			this.active.down = false;
-		} else {
-			this.active.up = false;
-		}
-
-		if (position.y < characterPosition.y - offsetH) {
-			this.setY(this.srcLocations.down);
-			this.active.down = true;
-			this.active.up = false;
-		} else {
-			this.active.down = false;
-		}
-		
-		if (position.x > characterPosition.x + offsetW) {
-			this.setY(this.srcLocations.left);
-			this.active.left = true;
-			this.active.right = false;
-		} else {
-			this.active.left = false;
-		}
-
-		if (position.x < characterPosition.x - offsetW) {
-			this.setY(this.srcLocations.right);
-			this.active.right = true;
-			this.active.left = false;
-		} else {
-			this.active.right = false;
-		}
-
-
+		return Collisionable.getSides(position, characterPosition, this.offsetW, this.offsetH);
 	}
 
 	resetActive() {
-		let dir;
-		for (dir in this.active) {
-			this.active[dir] = false;
+		Object.keys(this.active).forEach(side => this.active[side] = false);
+	}
+
+	attack() {
+		if (this.attackDelay === 0) {
+			if (!this.attacking) {
+				let src = this.srcLocations.attack[this.facing];
+				this.attacking = true;
+				this.setSrc(src);
+				this.attackLen = this.current.frames.length;
+			}
+
+		} else {
+			this.resetX();
+			this.attackDelay--;
+			return;
 		}
-		this.resetX();
+
+		if (this.attackLen > 0) {
+			this.attackLen--;
+		} else {
+			this.setSrc(this.srcLocations[this.facing]);
+			this.attackDelay = Utils.random(50, 100);
+			this.attacking = false;
+		}
+
 	}
 }
