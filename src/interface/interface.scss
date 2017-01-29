@@ -3,6 +3,7 @@
 	background-size: cover;
 	color: #fff;
 	left: 10%;
+	max-height: 80%;
 	max-width: 80%;
 	padding: 3rem;
 	position: absolute;
@@ -11,12 +12,25 @@
 	transition: 0.35s opacity ease-in-out;
 	width: 450px;
 	z-index: 5;
+
+	@include s {
+		left: 25vw;
+		padding: 1rem;
+		top: 10%;
+		width: 50vw;
+	};
 	.btn {
 		margin: 10px;
 		min-width: 150px;
+		@include s {
+			padding: 0.5rem;
+		};
 	}
 	.title {
 		color: #fff;
+		@include s {
+			font-size: 1.2rem;
+		};
 	}
 
 	&.loading {
@@ -46,7 +60,7 @@
 		}
 	}
 	> div {
-		* {
+		> * {
 			position: relative;
 		}
 	}

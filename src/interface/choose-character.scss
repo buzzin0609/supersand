@@ -9,8 +9,19 @@
 	}
 }
 
+.characters {
+	overflow-x: auto;
+	width: 100%;
+	> div {
+		width: 100%;
+	}
+}
+
 .character {
-	@include grid(6);
+	@include grid(4);
+	padding-bottom: 20px;
+	position: relative;
+	text-align: center;
 	img {
 		cursor: pointer;
 		transition: transform 0.35s;
@@ -18,5 +29,14 @@
 		&:hover {
 			transform: scale(1);
 		}
+		@include s {
+			height: auto;
+			max-height: 70px;
+			width: auto;
+		};
+	}
+	h3 {
+		position: absolute;
+		width: 100%;
 	}
 }

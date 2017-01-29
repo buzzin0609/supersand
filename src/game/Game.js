@@ -4,6 +4,7 @@ import GameLoop from '../gameloop/GameLoop';
 import GameState from '../shared/GameState';
 import walls from './gameObstacles';
 import Goon from '../actor/Enemy/Goon';
+import GameControls from '../gameControls/GameControls';
 
 
 export default class Game extends Component {
@@ -34,6 +35,7 @@ export default class Game extends Component {
 						height="600"
 						 />
 				</div>
+				<GameControls />
 			</div>
 		)
 	}

@@ -26,16 +26,18 @@ class PreGame extends SuperComponent {
 	render() {
 		return (
 			<div id="pre-game">
+				{window.innerWidth > 667 &&
+					(<Scene
+						id="pre-game-scene"
+						width="720" height="640"
+						actors={[PreGoku()]}
+						obstacles={this.obstacles}
+						target="#kame-house"
+						bg="img/kame-house-map.png"
+						bgId="kame-house"
+						/>)
+				}
 
-				<Scene
-					id="pre-game-scene" 
-					width="720" height="640"
-					actors={[PreGoku()]}
-					obstacles={this.obstacles}
-					target="#kame-house"
-					bg="img/kame-house-map.png"
-					bgId="kame-house"
-					/>
 			</div>
 		);
 	}

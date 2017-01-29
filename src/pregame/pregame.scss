@@ -14,4 +14,7 @@
 	left: 0;
 	position: absolute;
 	top: 0;
+	@include s {
+		display: none;
+	};
 }

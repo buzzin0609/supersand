@@ -126,7 +126,6 @@ class GameActor extends KeyboardActor {
 			let enemy = enemies[i];
 			if (Collisionable.detect(this.position, enemy.pullArea)) {
 				enemy.isPulled = true;
-				console.log('collision with enemy');
 			} else if (enemy.isPulled) {
 				enemy.isPulled = false;
 			}

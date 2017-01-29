@@ -36,9 +36,13 @@ class ChooseCharacter extends SuperComponent {
 	render() {
 		return (
 			<div id="choose-character">
-				<h2>Choose character</h2>
+				<h2 className="title">Choose character</h2>
 				<p className="tagline">Which hero is going to save the day</p>
-				{ this.outputCharacters() }
+				<div className="characters">
+					<div className="characters__scroll-wrap group">
+						{ this.outputCharacters() }
+					</div>
+				</div>
 
 				<footer>
 					<Btn setView="main">Main Menu</Btn>
