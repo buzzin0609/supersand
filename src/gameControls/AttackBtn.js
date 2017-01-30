@@ -18,7 +18,6 @@ export default class AttackBtn extends SuperComponent {
 	}
 
 	startAttack() {
-		console.log('startAttack');
 		let e = {
 			key : this.letter.toLowerCase()
 		};
