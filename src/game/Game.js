@@ -29,7 +29,7 @@ export default class Game extends Component {
 					<Scene
 						id="game-scene"
 						actors={[GameState.character]}
-						enemies={[Goon(), Goon(), Goon(), Goon(), Goon(), Goon()]}
+						enemies={[Goon(), Goon(), Goon()]}
 						obstacles={walls}
 						width="800"
 						height="450"
