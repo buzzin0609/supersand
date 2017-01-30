@@ -44,7 +44,6 @@ export default class Joystick extends SuperComponent {
 			let distanceX = current.left + (touchX - previousX) - offset;
 			let distanceY = current.top + (touchY - previousY) - offset;
 
-			console.log(distanceX, distanceY);
 			this.setCharacterMove(distanceX, distanceY);
 
 			if (Math.abs(distanceX) < stickDimension) {
