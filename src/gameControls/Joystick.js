@@ -161,10 +161,6 @@ export default class Joystick extends SuperComponent {
 	render() {
 		return (
 			<div id="joystick">
-				<div className="joystick__quarter quarter--up"></div>
-				<div className="joystick__quarter quarter--right"></div>
-				<div className="joystick__quarter quarter--down"></div>
-				<div className="joystick__quarter quarter--left"></div>
 				<div className="joystick__stick" onTouchStart={this.onTouchStart.bind(this)} onTouchMove={this.onTouchMove.bind(this)} onTouchEnd={this.onTouchEnd.bind(this)}></div>
 			</div>
 		);
