@@ -31,8 +31,8 @@ export default class Game extends Component {
 						actors={[GameState.character]}
 						enemies={[Goon(), Goon(), Goon(), Goon(), Goon(), Goon()]}
 						obstacles={walls}
-						width="1200"
-						height="600"
+						width="800"
+						height="450"
 						 />
 				</div>
 				<GameControls />
@@ -41,3 +41,23 @@ export default class Game extends Component {
 	}
 
 }
+
+
+
+(function() {
+
+	var myVar;
+
+	function myFunc() {
+		myVar = 2;
+	}
+
+	function myFunc2() {
+		var somethingwithMyVar = 3 + myVar;
+	}
+
+	myFunc();
+	myFunc2();
+
+
+}());

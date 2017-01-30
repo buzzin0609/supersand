@@ -1,24 +1,25 @@
 $joystickBlue: #184883;
+$dimension: 90px;
 
 #joystick {
 	background-color: $joystickBlue;
 	border-radius: 50%;
-	height: 60px;
-	margin-bottom: 10px;
+	height: $dimension;
+	margin-bottom: 20px;
 	margin-left: auto;
-	margin-right: 10px;
+	margin-right: 40px;
 	opacity: 0.5;
 	position: relative;
-	width: 60px;
+	width: $dimension;
 	z-index: 3;
 }
 
 .joystick__stick {
 	background-color: darken($joystickBlue, 15%);
 	border-radius: 50%;
-	height: 30px;
-	left: 15px;
+	height: ($dimension / 2);
+	left: ($dimension / 4);
 	position: absolute;
-	top: 15px;
-	width: 30px;
+	top: ($dimension / 4);
+	width: ($dimension / 2);
 }

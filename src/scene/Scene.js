@@ -116,8 +116,8 @@ class Scene extends SuperComponent {
 		let scaleY = (window.innerHeight - 20) / this.canvas.height;
 		let parent = this.canvas.parentElement;
 		let scaleToFit = Utils.toFixed(Math.min(scaleX, scaleY), 4);
-		if (scaleToFit > 1) {
-			scaleToFit = 1;
+		if (scaleToFit > 2) {
+			scaleToFit = 2;
 		}
 
 		parent.style.transform = `scale3d(${scaleToFit}, ${scaleToFit}, ${scaleToFit}) ${(parent.id === 'game-scene-wrapper' && 'translate3d(-50%, -50%, 0)')}`;

@@ -2,8 +2,10 @@ import React from 'react';
 import SuperComponent from '../shared/SuperComponent';
 import GameState from '../shared/GameState';
 
-export default class Joystick extends SuperComponent {
+const stickDimension = 45;
+const offset = stickDimension / 2;
 
+export default class Joystick extends SuperComponent {
 	constructor(props) {
 		super(props);
 		this.dragging = false;
@@ -39,17 +41,17 @@ export default class Joystick extends SuperComponent {
 			let touchX = e.touches[0].clientX;
 			let touchY = e.touches[0].clientY;
 
-			let distanceX = current.left + (touchX - previousX) - 15;
-			let distanceY = current.top + (touchY - previousY) - 15;
+			let distanceX = current.left + (touchX - previousX) - offset;
+			let distanceY = current.top + (touchY - previousY) - offset;
 
 			console.log(distanceX, distanceY);
 			this.setCharacterMove(distanceX, distanceY);
 
-			if (Math.abs(distanceX) < 30) {
+			if (Math.abs(distanceX) < stickDimension) {
 				this.distance.x = distanceX;
 			}
 
-			if (Math.abs(distanceY) < 30) {
+			if (Math.abs(distanceY) < stickDimension) {
 				this.distance.y = distanceY;
 			}
 
@@ -97,7 +99,7 @@ export default class Joystick extends SuperComponent {
 		character.pressed = [];
 		Object.keys(character.active).forEach(side => {
 			if (sides.includes(side)) {
-				character.pressed.push(side);
+				character.pressed.unshift(side);
 				if (!character.active[side]) {
 					character.active[side] = true;
 					character.setMoveSrc();
