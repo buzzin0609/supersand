@@ -2,8 +2,9 @@ $restrict : 1280px;
 
 html {
 	font-family: 'Antenna', sans-serif;
-	width: 100%;
 	height: 100%;
+	overflow: hidden;
+	width: 100%;
 }
 
 body {
