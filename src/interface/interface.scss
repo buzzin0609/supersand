@@ -6,6 +6,7 @@
 	max-height: 80%;
 	max-width: 80%;
 	padding: 3rem;
+	overflow-y: auto;
 	position: absolute;
 	text-align: center;
 	top: 10%;
@@ -14,10 +15,24 @@
 	z-index: 5;
 
 	@include s {
-		left: 25vw;
-		padding: 1rem;
-		top: 10%;
-		width: 50vw;
+		&:not(.game) {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+			height: 100vh;
+			left: 0;
+			max-height: none;
+			max-width: none;
+			padding: 1rem;
+			top: 0;
+			width: 100vw;
+			div:last-child {
+				align-items: center;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+		}
 	};
 	.btn {
 		margin: 10px;
@@ -28,9 +43,15 @@
 	}
 	.title {
 		color: #fff;
+		display: block;
+		width: 100%;
 		@include s {
-			font-size: 1.2rem;
+			font-size: 2.5rem;
 		};
+	}
+
+	h2 {
+		width: 100%;
 	}
 
 	&.loading {

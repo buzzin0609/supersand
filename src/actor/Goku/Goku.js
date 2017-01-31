@@ -45,7 +45,7 @@ const Goku = function(args = false) {
 		width : 32,
 		height : 32,
 		startX : 0.5,
-		startY : 0.6,
+		startY : 0.25,
 		srcLocations : {
 			'up' : 2,
 			'right' : 4,

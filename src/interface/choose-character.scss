@@ -7,10 +7,14 @@
 		display: inline-block;
 		width: auto;
 	}
+	.tagline {
+		margin-bottom: 0;
+	}
 }
 
 .characters {
 	overflow-x: auto;
+	overflow-y: hidden;
 	width: 100%;
 	> div {
 		width: 100%;
@@ -31,7 +35,7 @@
 		}
 		@include s {
 			height: auto;
-			max-height: 70px;
+			max-height: 100px;
 			width: auto;
 		};
 	}
