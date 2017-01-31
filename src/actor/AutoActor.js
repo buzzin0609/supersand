@@ -13,12 +13,13 @@ const AutoActor = (function() {
 	const directions = ['up', 'right', 'down', 'left'];
 
 	return class AutoActor extends MovingActor {
-		constructor(name, args) {
-			super(name, args);
+		constructor(args) {
+			super(args);
 			this.pullArea = false;
 			this.direction = false;
 			this.path = false;
 			this.patrolling = false;
+			this.startPatrol = args.patrolOnStart !== undefined ? args.patrolOnStart : true;
 			this.waitLength = Utils.random(50, 250);
 			this.setPullZone();
 		}
@@ -46,13 +47,16 @@ const AutoActor = (function() {
 		}
 
 		beforeRender() {
-			if (!this.patrolling) {
-				this.setPatrol();
+			if (this.startPatrol) {
+				if (!this.patrolling) {
+					this.setPatrol();
+				}
+				super.move();
+				this.patrol();
+			} else {
+				this.resetX(0);
+
 			}
-
-			super.move();
-
-			this.patrol();
 		}
 
 		handleState() {

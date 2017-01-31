@@ -4,8 +4,11 @@
 	width: 100%;
 }
 
-#game-scene-wrapper {
-	background-image: url('img/grass.png');
+#Stage-1-wrapper {
+	background-image: url('img/levels/tutorial.jpg');
+}
+
+.scene-wrapper {
 	left: 50%;
 	position: absolute;
 	transform-origin: 0 0;

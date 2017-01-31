@@ -63,7 +63,7 @@ const Vegeta = function(args = false) {
 		width : 18,
 		height : 35,
 		startX : 0.5,
-		startY : 0.6,
+		startY : 0.25,
 		srcLocations : {
 			'up' : 3,
 			'right' : 1,

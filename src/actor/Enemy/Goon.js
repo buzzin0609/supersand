@@ -1,9 +1,9 @@
 import Enemy from './Enemy';
 import Utils from '../../utils/utils';
 
-const Goon = function() {
+const Goon = function(startX, startY, patrol) {
 	return new Enemy({
-		name : 'Goon',
+		name: 'Goon',
 		imgUrl : 'enemies/enemy-master-sprite-sheet.png',
 		profilePic : 'gok-port-ss.png',
 		attributes : {
@@ -21,8 +21,8 @@ const Goon = function() {
 		],
 		width : 32,
 		height : 32,
-		startX : Utils.toFixed(Utils.randomFloat(0.2,0.8), 1),
-		startY : Utils.toFixed(Utils.randomFloat(0.6,0.8), 1),
+		startX : startX || Utils.toFixed(Utils.randomFloat(0.2,0.8), 1),
+		startY : startY || Utils.toFixed(Utils.randomFloat(0.6,0.8), 1),
 		srcLocations : {
 			'up' : 1,
 			'right' : 3,
@@ -54,7 +54,9 @@ const Goon = function() {
 				'left' : 19
 			},
 
-		}
+		},
+		patrolOnStart : patrol
+
 	});
 };
 

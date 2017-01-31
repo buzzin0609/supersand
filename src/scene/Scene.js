@@ -120,7 +120,7 @@ class Scene extends SuperComponent {
 			scaleToFit = 2;
 		}
 
-		parent.style.transform = `scale3d(${scaleToFit}, ${scaleToFit}, ${scaleToFit}) ${(parent.id === 'game-scene-wrapper' && 'translate3d(-50%, -50%, 0)')}`;
+		parent.style.transform = `scale3d(${scaleToFit}, ${scaleToFit}, ${scaleToFit}) ${(/stage/i.test(parent.id) && 'translate3d(-50%, -50%, 0)')}`;
 	}
 
 	componentWillUnmount() {

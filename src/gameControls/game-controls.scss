@@ -3,6 +3,9 @@
 	left: 0;
 	position: absolute;
 	width: 100%;
+	@media (min-width: 1025px) {
+		display: none;
+	}
 }
 
 

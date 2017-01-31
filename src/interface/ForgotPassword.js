@@ -24,7 +24,7 @@ export default class ForgotPassword extends PostForm {
 
 
 	afterSubmit(response) {
-		console.log(response);
+		// console.log(response);
 		this.username = this.postData.username;
 		if (this.state.stage === 1) {
 			this.setState({

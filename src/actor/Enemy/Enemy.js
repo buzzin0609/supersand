@@ -4,8 +4,8 @@ import Collisionable from '../../collisions/Collisionable';
 import Utils from '../../utils/utils';
 
 export default class Enemy extends AutoActor {
-	constructor(name, args) {
-		super(name, args);
+	constructor(args) {
+		super(args);
 		this.isPulled = false;
 		this.engaged = false;
 		this.attacking = false;

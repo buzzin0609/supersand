@@ -2,19 +2,21 @@ import React, { Component } from 'react';
 import Scene from '../scene/Scene';
 import GameLoop from '../gameloop/GameLoop';
 import GameState from '../shared/GameState';
-import walls from './gameObstacles';
-import Goon from '../actor/Enemy/Goon';
 import GameControls from '../gameControls/GameControls';
+import Stages from '../Stages/Stages';
 
 
 export default class Game extends Component {
-
-	componentWillMount() {
-		console.log(GameState.character, 'about to mount actor');
+	constructor(props) {
+		super(props);
+		this.state = {
+			stage : GameState.get('stage') || 1
+		}
+		// console.log(this.state);
 	}
 
 	componentDidMount() {
-		console.log('mounted game');
+		// console.log('mounted game');
 		GameLoop.start.call(GameLoop);
 	}
 
@@ -26,14 +28,7 @@ export default class Game extends Component {
 		return (
 			<div className="wrapper">
 				<div id="game">
-					<Scene
-						id="game-scene"
-						actors={[GameState.character]}
-						enemies={[Goon(), Goon(), Goon()]}
-						obstacles={walls}
-						width="800"
-						height="450"
-						 />
+					{Stages.get(this.state.stage)}
 				</div>
 				<GameControls />
 			</div>
@@ -41,23 +36,3 @@ export default class Game extends Component {
 	}
 
 }
-
-
-
-(function() {
-
-	var myVar;
-
-	function myFunc() {
-		myVar = 2;
-	}
-
-	function myFunc2() {
-		var somethingwithMyVar = 3 + myVar;
-	}
-
-	myFunc();
-	myFunc2();
-
-
-}());

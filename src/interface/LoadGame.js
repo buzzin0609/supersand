@@ -68,7 +68,7 @@ export default class LoadGame extends Login {
 	}
 
 	handleLoadGame(game) {
-		console.log(game.character, 'saved character', Characters);
+		// console.log(game.character, 'saved character', Characters);
 		let character = Characters[game.character.name](game.character);
 		game.character = character;
 		GameState.character = character;

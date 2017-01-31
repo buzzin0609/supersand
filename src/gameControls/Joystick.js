@@ -101,7 +101,7 @@ export default class Joystick extends SuperComponent {
 				character.pressed.unshift(side);
 				if (!character.active[side]) {
 					character.active[side] = true;
-					character.facing = side;
+					character.facing[side];
 					character.setMoveSrc();
 				}
 			} else {

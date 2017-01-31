@@ -26,12 +26,12 @@ export default class SetSecret extends PostForm {
 	}
 
 	beforeSubmit() {
-		console.log(GameState.get('player'));
+		// console.log(GameState.get('player'));
 		this.postData.playerId = GameState.get('player')._id;
 	}
 
 	afterSubmit(response) {
-		console.log(response);
+		// console.log(response);
 		if (GameState.hasStarted) {
 			this.On.trigger('setView', 'save');
 		} else {

@@ -12,9 +12,7 @@ $dimension: 90px;
 	position: relative;
 	width: $dimension;
 	z-index: 3;
-	@media (min-width: 1025px) {
-		display: none;
-	}
+	
 }
 
 .joystick__stick {

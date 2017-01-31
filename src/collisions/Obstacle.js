@@ -22,7 +22,9 @@ var Factory = (function() {
 			};
 			this.setup();
 			// Utils.debounce.on('resize', this.setup.bind(this));
-			GameLoop.register(this.render.bind(this));
+			if (args.debug) {
+				GameLoop.register(this.render.bind(this));
+			}
 		}
 
 
@@ -33,7 +35,7 @@ var Factory = (function() {
 			this.height = Math.floor(scene.canvas.height * this.percentages.height);
 			this.x = Math.floor(scene.canvas.width * this.startX);
 			this.y = Math.floor(scene.canvas.height * this.startY);
-			console.log(this);
+			// console.log(this);
 
 		}
 

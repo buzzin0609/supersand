@@ -24,7 +24,6 @@ const Chad = function(args = false) {
 
 		resetAttack() {
 			super.resetAttack();
-			console.log(this.width);
 			this.width = normalWidth;
 		}
 	}
