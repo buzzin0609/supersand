@@ -1,4 +1,3 @@
-import React from 'react';
 import Stage1 from './Stage1/Stage1';
 
 const StageList = [

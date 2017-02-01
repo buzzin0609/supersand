@@ -13,8 +13,8 @@ export default class Joystick extends SuperComponent {
 		this.touchMoveEvt = false;
 		this.touchEndEvt = false;
 		this.stick = false;
-		this.previousX; this.previousY;
-		this.current;
+		this.previousX = false; this.previousY = false;
+		this.current = false;
 		this.distance = {};
 		this.threshold = 20;
 	}
@@ -69,7 +69,6 @@ export default class Joystick extends SuperComponent {
 	}
 
 	setCharacterMove(distanceX, distanceY) {
-		let { character } = GameState;
 		let sides = [];
 
 		if (distanceX < 0 - this.threshold) {

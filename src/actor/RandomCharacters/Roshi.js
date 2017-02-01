@@ -1,20 +1,20 @@
 import Actor from '../Actor';
 
-const Goon = function() {
+const Roshi = function(startX, startY) {
 	return new Actor({
 		name: 'Roshi',
 		imgUrl : 'characters/roshi.png',
 		profilePic : 'gok-port-ss.png',
 		attributes : {
-			'speed' : Utils.toFixed(Utils.randomFloat(1,3), 2)
+			'speed' : 1
 		},
 		frames : [
-			'70,8,8,8'
+			'220,20,80,20'
 		],
-		width : 32,
-		height : 32,
-		startX : startX || Utils.toFixed(Utils.randomFloat(0.2,0.8), 1),
-		startY : startY || Utils.toFixed(Utils.randomFloat(0.6,0.8), 1),
+		width : 23,
+		height : 30,
+		startX : startX ? startX : 0.3,
+		startY : startY ? startY : 0.2,
 		srcLocations : {
 			'up' : 1,
 			'right' : 3,
@@ -26,4 +26,4 @@ const Goon = function() {
 	});
 };
 
-export default Goon;
+export default Roshi;

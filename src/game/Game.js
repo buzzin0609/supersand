@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Scene from '../scene/Scene';
 import GameLoop from '../gameloop/GameLoop';
 import GameState from '../shared/GameState';
 import GameControls from '../gameControls/GameControls';

@@ -42,7 +42,7 @@ class Actor {
 			y : 0
 		};
 
-		this.attributes = args.attributes;
+		this.attributes = args.attributes || {};
 		this.direction = false;
 		this.srcLocations = args.srcLocations;
 		this.initialised = Date.now();

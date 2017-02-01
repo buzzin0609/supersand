@@ -36,7 +36,6 @@ class Scene extends SuperComponent {
 		this.registerCanvas();
 		this.addActors();
 		this.handleObstacles();
-		this.add
 		this.scaleCanvas();
 		Utils.debounce.on('resize', this.scaleCanvas.bind(this));
 	}
@@ -49,14 +48,7 @@ class Scene extends SuperComponent {
 	addActors() {
 		if (this.props.enemies) {
 			this.props.enemies.forEach(enemy => {
-				let enemyScene = Object.assign({}, this);
-				let canvas = document.createElement('canvas');
-				canvas.className = 'scene';
-				canvas.width = this.canvas.width;
-				canvas.height = this.canvas.height;
-
-				enemyScene.canvas = canvas;
-				this.canvas.parentElement.insertAdjacentElement('afterbegin', enemyScene.canvas);
+				let enemyScene = this.createNewScene();
 				enemy.addScene(enemyScene);
 				GameLoop.register(enemy.render.bind(enemy));
 				if (enemy.events) {
@@ -65,6 +57,14 @@ class Scene extends SuperComponent {
 
 			});
 		}
+		if (this.props.staticActors) {
+			this.props.staticActors.forEach(actor => {
+				let actorScene = this.createNewScene();
+				actor.addScene(actorScene);
+				GameLoop.register(actor.render.bind(actor));
+			});
+		}
+
 		this.props.actors.forEach(actor => {
 			actor.addScene(this);
 			actor.addEnemies(this.props.enemies);
@@ -73,6 +73,18 @@ class Scene extends SuperComponent {
 				actor.events();
 			}
 		});
+	}
+
+	createNewScene() {
+		let scene = Object.assign({}, this);
+		let canvas = document.createElement('canvas');
+		canvas.className = 'scene';
+		canvas.width = this.canvas.width;
+		canvas.height = this.canvas.height;
+
+		scene.canvas = canvas;
+		this.canvas.parentElement.insertAdjacentElement('afterbegin', scene.canvas);
+		return scene;
 	}
 
 	handleObstacles() {
@@ -146,7 +158,7 @@ class Scene extends SuperComponent {
 			<div id={this.props.id + '-wrapper' || ''} className="scene-wrapper" style={{width: `${this.props.width}px`, height: `${this.props.height}px`}}>
 				{
 					this.props.bg &&
-					<img id={this.props.bgId} width={this.props.width} height={this.props.height} src={this.props.bg} className="bg"/>
+					<img id={this.props.bgId} width={this.props.width} height={this.props.height} src={this.props.bg} alt={this.props.id} className="bg"/>
 				}
 				<canvas id={this.props.id || ''} width={this.props.width} height={this.props.height} className="scene"></canvas>
 			</div>

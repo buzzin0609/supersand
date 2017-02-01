@@ -81,6 +81,9 @@ export default class SetSecret extends PostForm {
 			y: pxToPercent(characterToSave.position.y, characterToSave.scene.canvas.height) / 100
 		};
 		characterToSave.scene = null;
+		characterToSave.ctx = null;
+		characterToSave.enemies = null;
+		// debugger;
 		let args = {
 			character : characterToSave,
 			saveName : this.overwrite ? this.overwrite : this.postData.saveName

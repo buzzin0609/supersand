@@ -8,9 +8,11 @@ class MainMenu extends SuperComponent {
 		return (
 			<div>
 				<h1 className="title">The Legend of the SuperSand Saiyan!</h1>
-				<Btn setView="controls">Controls</Btn>
-				<Btn setView="choose">New Game</Btn>
-				<Btn setView="load">Load Game</Btn>
+				<div className="main-menu__btns">
+					<Btn setView="controls">Controls</Btn>
+					<Btn setView="choose">New Game</Btn>
+					<Btn setView="load">Load Game</Btn>
+				</div>
 			</div>
 		);
 	}

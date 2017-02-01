@@ -28,8 +28,6 @@ const MovingActor = (function() {
 		setMoveSrc() {
 			if (this.pressed[0]) {
 				this.setSrc(this.srcLocations[this.pressed[0]]);
-				// console.log('set src', this);
-
 			}
 		}
 

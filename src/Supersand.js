@@ -1,7 +1,7 @@
 import React from 'react';
 import SuperComponent from './shared/SuperComponent';
 import Interface from './interface/Interface';
-import PreGame from './pregame/PreGame';
+// import PreGame from './pregame/PreGame';
 import Game from './game/Game';
 import './events/GlobalEvents';
 import GameState from './shared/GameState';
@@ -22,7 +22,7 @@ class Supersand extends SuperComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
-			content : <PreGame />
+			content : ""
 		};
 		GameState.on('start', this.onStart.bind(this));
 		GameState.on('stop', this.onStop.bind(this));
@@ -44,7 +44,7 @@ class Supersand extends SuperComponent {
 	}
 
 	onStop() {
-		this.content = <PreGame />;
+		this.content = "";
 	}
 
 	render() {

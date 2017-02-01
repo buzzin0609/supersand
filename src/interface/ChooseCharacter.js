@@ -15,6 +15,7 @@ class ChooseCharacter extends SuperComponent {
 
 	setCharacter(Character) {
 		GameState.character = Character;
+		GameState.set('stage', 1);
 		GameState.start.call(GameState);
 		this.On.trigger('setView', 'game');
 	}
