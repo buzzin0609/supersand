@@ -7,6 +7,7 @@ const Goon = function(startX, startY, patrol) {
 		imgUrl : 'enemies/enemy-master-sprite-sheet.png',
 		profilePic : 'gok-port-ss.png',
 		attributes : {
+			'strength' : 2,
 			'speed' : Utils.toFixed(Utils.randomFloat(1,3), 2)
 		},
 		frames : [

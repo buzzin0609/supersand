@@ -26,3 +26,93 @@
 	top: 0;
 	z-index: 2;
 }
+
+.profile-ui {
+	@include group;
+	min-width: 320px;
+	padding: 10px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 50%;
+	z-index: 5;
+}
+
+.profile-ui__actor {
+	@include group;
+	background-color: #103057;
+	float: right;
+	padding: 10px;
+}
+
+.profile__img {
+	float: left;
+	margin-right: 5px;
+	width: 33px;
+}
+
+.profile__bar {
+	background-color: lighten(#000, 20%);
+	border-radius: 2px;
+	box-shadow: 0 1px 3px rgba(0,0,0, 0.12);
+	clear: right;
+	float: right;
+	height: 25px;
+	margin-bottom: 5px;
+	overflow: hidden;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	position: relative;
+	width: 150px;
+	&:after {
+		color: #fff;
+		font-size: 0.65rem;
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+.bar__inner {
+	height: 100%;
+	left: -100%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.health-bar {
+	&:after {
+		content: 'health';
+	}
+}
+
+.ki-bar {
+	height: 12.5px;
+	&:after {
+		content: 'ki energy';
+	}
+}
+
+.health-bar__inner {
+	background-color: red;
+}
+
+.ki-bar__inner {
+	background-color: #520875;
+}
+
+.exp-bar {
+	float: none;
+	height: 12.5px;
+	width: 100%;
+	&:after {
+		content: 'exp';
+	}
+}
+
+.exp-bar__inner {
+	background-color: green;
+}

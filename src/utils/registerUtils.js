@@ -5,3 +5,4 @@ require('./isImg');
 require('./arrayFindOne');
 require('./random');
 require('./toFixed');
+require('./slugify');

@@ -2,11 +2,23 @@
 import Actor from './Actor';
 import Utils from '../utils/utils';
 import Collisionable from '../collisions/Collisionable';
+import { incrementAttributes } from './StaticActorMethods';
 
 const required = [
 	'srcLocations',
 	'attributes'
 ];
+
+const incrementors = {
+	health: 0.01,
+	speed: 0.001,
+	strength: 0.001
+};
+
+const attrDefaults = {
+	health: 100,
+	strength: 2
+};
 
 const MovingActor = (function() {
 
@@ -23,6 +35,17 @@ const MovingActor = (function() {
 			this.pressed = [];
 			this.previous = false;
 
+			Object.assign(this.attributes, attrDefaults);
+
+			this.setAttributes();
+		}
+
+		setAttributes() {
+			let { attributes } = this;
+			for (let i = 1; i <= this.level; i++) {
+				attributes = incrementAttributes(attributes, incrementors);
+			}
+			this.attributes = attributes;
 		}
 
 		setMoveSrc() {
@@ -132,6 +155,26 @@ const MovingActor = (function() {
 
 				}
 			}
+		}
+
+		receiveHit(value) {
+			//temp put back to full for now
+			if (this.attributes.health < 0) {
+				this.handleHealth(100, 'add');
+				return;
+			}
+			this.handleHealth(value);
+		}
+
+		handleHealth(value, addRemove = 'remove') {
+			let { health } = this.attributes;
+			if (addRemove === 'remove') {
+				health -= value;
+			} else {
+				health += value;
+			}
+			this.attributes.health = health;
+			this.profileCard.setHealth(value, addRemove);
 		}
 
 	};

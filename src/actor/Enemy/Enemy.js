@@ -2,6 +2,7 @@ import AutoActor from '../AutoActor';
 import GameState from '../../shared/GameState';
 import Collisionable from '../../collisions/Collisionable';
 import Utils from '../../utils/utils';
+import { addProfileCard } from '../StaticActorMethods';
 
 export default class Enemy extends AutoActor {
 	constructor(args) {
@@ -100,6 +101,11 @@ export default class Enemy extends AutoActor {
 				this.attacking = true;
 				this.setSrc(src);
 				this.attackLen = this.current.frames.length;
+
+				let { strength } = this.attributes;
+				let minHit = Math.min(this.baseHit, strength);
+				let maxHit = Utils.randomFloat(strength, Math.max(strength, strength * this.level));
+				GameState.character.receiveHit(this.baseHit + Utils.random(minHit, maxHit));
 			}
 
 		} else {

@@ -1,6 +1,8 @@
 import KeyboardActor from './KeyboardActor';
 import Utils from '../utils/utils';
 import Collisionable from '../collisions/Collisionable';
+import { addProfileCard } from './StaticActorMethods';
+
 // const required = [
 //
 // ];
@@ -16,7 +18,6 @@ const attacks = {
 	'f' : 'attack4'
 };
 
-
 class GameActor extends KeyboardActor {
 	constructor(args) {
 		Utils.requiredProps(requiredSrcLocations, args.srcLocations);
@@ -25,9 +26,11 @@ class GameActor extends KeyboardActor {
 		this.comboState = 1;
 		this.comboQueued = false;
 		this.attacks = args.attacks || attacks;
-		this.level = args.level || 1;
+
 		this.resetAttackState();
 	}
+
+
 
 	resetAttackState() {
 		this.startAttack = false;
@@ -78,6 +81,10 @@ class GameActor extends KeyboardActor {
 			this.current.x = 0;
 		}
 
+		if (!this.profileRendered) {
+			this.profileRendered = true;
+			addProfileCard(this);
+		}
 	}
 
 	attack() {
@@ -88,17 +95,6 @@ class GameActor extends KeyboardActor {
 		if (this.attackCount >= this.currentAttackLen) {
 			this.resetAttack();
 		}
-	}
-
-	punch() {
-		if (!this.startAttack) {
-			this.setAttack();
-		}
-		this.attackCount++;
-		if (this.attackCount >= this.currentAttackLen) {
-			this.resetAttack();
-		}
-		// console.log(this.frameIndex);
 	}
 
 	setAttack() {

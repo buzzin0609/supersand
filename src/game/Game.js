@@ -3,7 +3,7 @@ import GameLoop from '../gameloop/GameLoop';
 import GameState from '../shared/GameState';
 import GameControls from '../gameControls/GameControls';
 import Stages from '../Stages/Stages';
-
+import ProfileInterface from './ProfileInterface';
 
 export default class Game extends Component {
 	constructor(props) {
@@ -26,6 +26,7 @@ export default class Game extends Component {
 	render() {
 		return (
 			<div className="wrapper">
+				<ProfileInterface />
 				<div id="game">
 					{Stages.get(this.state.stage)}
 				</div>

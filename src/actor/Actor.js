@@ -11,6 +11,7 @@ var required = [
 	'height'
 ];
 
+
 class Actor {
 	constructor(args) {
 		args = args || {};
@@ -18,6 +19,7 @@ class Actor {
 		this.name = args.name;
 		this.imgUrl = args.imgUrl;
 		this.profilePic = args.profilePic;
+		this.profileRendered = false;
 		this.frames = Array.isArray(args.frames[0]) ? args.frames : buildFrameArray(args.frames);
 		this.frameIndex = 0;
 
@@ -41,11 +43,13 @@ class Actor {
 			x : 0,
 			y : 0
 		};
-
 		this.attributes = args.attributes || {};
+		this.baseHit = args.baseHit || 4;
 		this.direction = false;
 		this.srcLocations = args.srcLocations;
 		this.initialised = Date.now();
+
+		this.level = args.level || 1;
 
 	}
 
