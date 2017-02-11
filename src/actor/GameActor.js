@@ -1,144 +1,159 @@
+//noinspection JSLint
 import KeyboardActor from './KeyboardActor';
 import Utils from '../utils/utils';
 import Collisionable from '../collisions/Collisionable';
-import { addProfileCard, removeProfileCard } from './StaticActorMethods';
+import {addProfileCard, removeProfileCard} from './StaticActorMethods';
 import GameState from '../shared/GameState';
+import GameLoop from '../gameloop/GameLoop';
 
 // const required = [
 //
 // ];
 
 const requiredSrcLocations = [
-	'attack'
+    'attack'
 ];
 
 const attacks = {
-	'a' : 'attack',
-	's' : 'attack2',
-	'd' : 'attack3',
-	'f' : 'attack4'
+    'a': 'attack',
+    's': 'attack2',
+    'd': 'attack3',
+    'f': 'attack4'
 };
 
 class GameActor extends KeyboardActor {
-	constructor(args) {
-		Utils.requiredProps(requiredSrcLocations, args.srcLocations);
-		super(args);
-		this.facing = 'down';
-		this.comboState = 1;
-		this.comboQueued = false;
-		this.attacks = args.attacks || attacks;
-		this.resetAttackState();
-	}
+    constructor(args) {
+        Utils.requiredProps(requiredSrcLocations, args.srcLocations);
+        super(args);
+        this.facing = 'down';
+        this.comboState = 1;
+        this.comboQueued = false;
+        //noinspection JSUnresolvedVariable
+        this.attacks = args.attacks || attacks;
+        this.resetAttackState();
+    }
 
 
+    resetAttackState() {
+        this.startAttack = false;
+        this.attacking = false;
+        this.attackType = '';
+        this.attackCount = 0;
+        this.currentAttackLen = 0;
+        if (!this.comboQueued) {
+            this.comboState = 1;
+        }
+    }
 
-	resetAttackState() {
-		this.startAttack = false;
-		this.attacking = false;
-		this.attackType = '';
-		this.attackCount = 0;
-		this.currentAttackLen = 0;
-		if (!this.comboQueued) {
-			this.comboState = 1;
-		}
-	}
+    setMoveSrc() {
+        if (this.pressed[0] && !this.attacking) {
+            this.setSrc(this.srcLocations[this.pressed[0]]);
+            // console.log('set src', this);
 
-	setMoveSrc() {
-		if (this.pressed[0] && !this.attacking) {
-			this.setSrc(this.srcLocations[this.pressed[0]]);
-			// console.log('set src', this);
+        }
+    }
 
-		}
-	}
+    keydown(e) {
+        super.keydown(e);
 
-	keydown(e) {
-		super.keydown(e);
+        if (this.pressed[0]) {
+            this.facing = this.pressed[0];
+        }
 
-		if (this.pressed[0]) {
-			this.facing = this.pressed[0];
-		}
-
-		let attack = attacks[e.key];
-		if (!this.attacking) {
-			this.attackType = attack;
-			if (attack) {
-				this.attacking = true;
-			}
-		}
-	}
-
-
-	beforeRender() {
-		if (this.dying) { return; }
-		if (this.pressed[0]) {
-			this.move();
-		}
-
-		if (this.attacking) {
-			this.attack();
-		}
-
-		if (!this.pressed[0] && !this.attacking) {
-			this.current.x = 0;
-		}
-
-		if (!this.profileRendered) {
-			this.profileRendered = true;
-			addProfileCard(this);
-		}
+        let attack = attacks[e.key];
+        if (!this.attacking) {
+            this.attackType = attack;
+            if (attack) {
+                this.attacking = true;
+            }
+        }
+    }
 
 
-	}
+    beforeRender() {
+        if (this.dying) {
+            return;
+        }
+        if (this.pressed[0]) {
+            this.move();
+        }
 
-	attack() {
-		if (!this.startAttack) {
-			this.setAttack();
-		}
-		this.attackCount++;
-		if (this.attackCount >= this.currentAttackLen) {
-			this.resetAttack();
-		}
-	}
+        if (this.attacking) {
+            this.attack();
+        }
 
-	setAttack() {
-		this.startAttack = true;
-		this.setSrc(this.srcLocations[this.attackType][this.facing]);
-		this.currentAttackLen = this.current.frames.length;
-	}
+        if (!this.pressed[0] && !this.attacking) {
+            this.current.x = 0;
+        }
 
-	resetAttack() {
-		this.resetAttackState();
-		this.setSrc(this.srcLocations[this.facing]);
-	}
+        if (!this.profileRendered) {
+            this.profileRendered = true;
+            addProfileCard(this);
+        }
 
-	handleState() {
-		if (this.enemies) {
-			this.handleEnemies();
-		}
-		super.handleState();
-	}
+    }
 
-	handleEnemies() {
-		let { enemies } = this;
-		let i = enemies.length;
+    attack() {
+        if (!this.startAttack) {
+            this.setAttack();
+        }
+        this.attackCount++;
+        if (this.attackCount >= this.currentAttackLen) {
+            this.resetAttack();
+        }
+    }
 
-		while (--i >= 0) {
-			let enemy = enemies[i];
-			if (Collisionable.detect(this.position, enemy.pullArea)) {
-				enemy.isPulled = true;
-			} else if (enemy.isPulled) {
-				enemy.isPulled = false;
-			}
-		}
-	}
+    setAttack() {
+        this.startAttack = true;
+        this.setSrc(this.srcLocations[this.attackType][this.facing]);
+        this.currentAttackLen = this.current.frames.length;
+        this.handleHitEnemies();
+    }
 
-	die() {
-		super.die();
-		if (this.dead) {
-			let setView = GameState.get('setView');
-			removeProfileCard(this);
-			setView('gameOver');
-		}
+    resetAttack() {
+        this.resetAttackState();
+        this.setSrc(this.srcLocations[this.facing]);
+    }
+
+    handleState() {
+        if (this.enemies) {
+            this.handleEnemies();
+        }
+        super.handleState();
+    }
+
+    handleEnemies() {
+        let {enemies} = this;
+        let i = enemies.length;
+
+        while (--i >= 0) {
+            let enemy = enemies[i];
+            if (Collisionable.detect(this.position, enemy.pullArea)) {
+                enemy.isPulled = true;
+
+            } else if (enemy.isPulled) {
+                enemy.isPulled = false;
+            }
+        }
+    }
+
+    handleHitEnemies() {
+        let {enemies} = this;
+        let i = enemies.length;
+
+        while (--i >= 0) {
+            let enemy = enemies[i];
+            if (enemy.hittable) {
+                enemy.receiveHit.call(enemy, this.generateHitValue());
+            }
+        }
+    }
+
+	handleDeath() {
+		GameLoop.stop.call(GameLoop);
+		let setView = GameState.get('setView');
+		removeProfileCard(this);
+		setView('gameOver');
 	}
 
 }

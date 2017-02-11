@@ -23,7 +23,7 @@ var Factory = (function() {
 			this.setup();
 			// Utils.debounce.on('resize', this.setup.bind(this));
 			if (args.debug) {
-				GameLoop.register(this.render.bind(this));
+				GameLoop.register(args.name, this.render.bind(this));
 			}
 		}
 
@@ -44,7 +44,7 @@ var Factory = (function() {
 		}
 
 		unregister() {
-			GameLoop.unregister(this.render.bind(this));
+			GameLoop.unregister(this.name, this.render.bind(this));
 		}
 
 

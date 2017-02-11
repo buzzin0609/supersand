@@ -1,7 +1,6 @@
-
-var Singleton = (function() {
-	var events = {};
-	var Instance = false;
+var Singleton = (function () {
+	let events = {};
+	let Instance = false;
 	return class On {
 
 		constructor() {
@@ -12,11 +11,21 @@ var Singleton = (function() {
 		}
 
 		set(evt, cb) {
-			events[evt] = cb;
+			let event = events[evt];
+			if (!event) {
+				events[evt] = [];
+			}
+			events[evt].push(cb);
 		}
 
 		trigger(evt, args) {
-			events[evt].call(events[evt], args);
+			if (!events[evt]) {
+				return;
+			}
+			let i = events[evt].length;
+			while (i--) {
+				events[evt][i].call(events[evt][i], args);
+			}
 		}
 	};
 }());

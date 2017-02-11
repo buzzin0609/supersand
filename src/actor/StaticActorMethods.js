@@ -8,10 +8,12 @@ export function handleAttack(attacker, attackee) {
 	attackee.health -= amount;
 }
 
-export function incrementAttributes(attributes, incrementors) {
+export function incrementAttributes(attributes, incrementers) {
 	for (let i = 0, keys = Object.keys(attributes), len = keys.length; i < len; i++) {
-		let attribute = attributes[keys[i]];
-		attributes[keys[i]] += attribute * incrementors[keys[i]];
+		if (incrementers[keys[i]]) {
+			let attribute = attributes[keys[i]];
+			attributes[keys[i]] += attribute * incrementers[keys[i]];
+		}
 	}
 	return attributes;
 }

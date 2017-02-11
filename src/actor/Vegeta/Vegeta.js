@@ -12,7 +12,6 @@ const Vegeta = function(args = false) {
 			super.setAttack();
 			if (['attack3', 'attack4'].includes(this.attackType) && ['left', 'right'].includes(this.facing)) {
 				this.width = attackWidths[this.attackType];
-				// debugger;
 			} else {
 				this.width = attackWidths.attack;
 			}
@@ -38,7 +37,8 @@ const Vegeta = function(args = false) {
 		imgUrl : 'vegeta-sheet-02.png',
 		profilePic : 'veg-port.png',
 		attributes : {
-			'speed' : 3
+			'speed' : 3,
+			'strength': 40
 		},
 		frames : [
 			'2,8,8,8,8,8,8,8',

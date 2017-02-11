@@ -46,29 +46,23 @@ class Scene extends SuperComponent {
 	}
 
 	addActors() {
-		if (this.props.enemies) {
-			this.props.enemies.forEach(enemy => {
-				let enemyScene = this.createNewScene();
-				enemy.addScene(enemyScene);
-				GameLoop.register(enemy.render.bind(enemy));
-				if (enemy.events) {
-					enemy.events();
-				}
-
-			});
-		}
-		if (this.props.staticActors) {
-			this.props.staticActors.forEach(actor => {
+		let notCharacters = this.props.enemies.concat(this.props.staticActors);
+		if (notCharacters) {
+			notCharacters.forEach(actor => {
 				let actorScene = this.createNewScene();
 				actor.addScene(actorScene);
-				GameLoop.register(actor.render.bind(actor));
+				GameLoop.register(actor.name, actor.render.bind(actor));
+				if (actor.events) {
+					actor.events();
+				}
+
 			});
 		}
 
 		this.props.actors.forEach(actor => {
 			actor.addScene(this);
 			actor.addEnemies(this.props.enemies);
-			GameLoop.register(actor.render.bind(actor));
+			GameLoop.register(actor.name, actor.render.bind(actor));
 			if (actor.events) {
 				actor.events();
 			}
@@ -149,7 +143,8 @@ class Scene extends SuperComponent {
 	removeActors() {
 		this.props.actors.forEach(actor => {
 			// console.log('unregistering actor', actor);
-			GameLoop.unregister(actor.render.bind(actor)); actor.unMount();
+			GameLoop.unregister(actor.name, actor.render.bind(actor));
+			actor.unMount();
 		});
 	}
 

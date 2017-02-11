@@ -1,6 +1,7 @@
-import MovingActor from './MovingActor';
+//noinspection JSLint
+import MovingActor from "./MovingActor";
+import Utils from "../utils/utils";
 // import GameState from '../shared/GameState';
-import Utils from '../utils/utils';
 
 function generatePath(numPoints) {
 	return new Array(numPoints)
@@ -65,14 +66,13 @@ const AutoActor = (function() {
 		}
 
 		patrol() {
-			if (this.path > 0) {
-				this.path--;
-			} else {
-				if (this.pressed[0]) {
-					this.pressed.shift();
+			if (this.path <= 0) {
+				if (this.pressed.shift()) {
 					this.active[this.direction] = false;
 				}
 				this.wait();
+			} else {
+				this.path--;
 			}
 		}
 

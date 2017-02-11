@@ -1,3 +1,4 @@
+//noinspection JSLint
 import _  from './Private';
 
 var GameState = (function() {

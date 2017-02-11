@@ -4,6 +4,6 @@ import Supersand from './Supersand';
 import '../public/app.css';
 
 ReactDOM.render(
-  <Supersand />,
-  document.getElementById('root')
+    <Supersand />,
+    document.getElementById('root')
 );

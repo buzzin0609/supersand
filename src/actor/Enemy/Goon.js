@@ -1,13 +1,16 @@
 import Enemy from './Enemy';
 import Utils from '../../utils/utils';
+import On from '../../utils/On';
+
 
 const Goon = function(startX, startY, patrol) {
-	return new Enemy({
-		name: 'Goon',
+
+	let enemy = new Enemy({
+		name: `Goon-${Date.now()}`,
 		imgUrl : 'enemies/enemy-master-sprite-sheet.png',
-		profilePic : 'gok-port-ss.png',
+		profilePic : 'enemies/enemy-port.png',
 		attributes : {
-			'strength' : 100,
+			'strength' : 3,
 			'speed' : Utils.toFixed(Utils.randomFloat(1,3), 2)
 		},
 		frames : [
@@ -18,7 +21,8 @@ const Goon = function(startX, startY, patrol) {
 			'5,5,5,5',
 			'5,5,5,5',
 			'5,5,5,5',
-			'5,5,5,5'
+			'5,5,5,5',
+			'10,10,10'
 		],
 		width : 32,
 		height : 32,
@@ -30,6 +34,7 @@ const Goon = function(startX, startY, patrol) {
 			'down' : 0,
 			'left' : 2,
 			'normal' : 0,
+			'dying' : 8,
 			'attack' : {
 				'up' : 5,
 				'right' : 7,
@@ -59,6 +64,12 @@ const Goon = function(startX, startY, patrol) {
 		patrolOnStart : patrol
 
 	});
+
+	On.set(`${enemy.name}-unmount`, () => {
+		enemy = null;
+	});
+
+	return enemy;
 };
 
 export default Goon;

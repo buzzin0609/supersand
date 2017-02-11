@@ -1,5 +1,4 @@
-
-var Singleton = (function() {
+var Singleton = (function () {
 	var Instance = false;
 	return class GameLoop {
 		constructor() {
@@ -7,7 +6,7 @@ var Singleton = (function() {
 				Instance = this;
 			}
 
-			this.callbacks = [];
+			this.callbacks = {};
 			this.raf = false;
 			this.running = false;
 			this.clear.bind(this);
@@ -16,21 +15,31 @@ var Singleton = (function() {
 			return Instance;
 		}
 
-		register(cb) {
-			this.callbacks.push(cb);
+		register(key, cb) {
+			if (this.callbacks[key]) {
+				console.warn(`callback: ${key} already defined. Please use a unique key`);
+				return;
+			}
+			this.callbacks[key] = cb;
 		}
 
-		unregister(cb) {
-			var callbacks = this.callbacks;
-			var index = callbacks.indexOf(cb);
-			callbacks.splice(index, 1);
-			if (!callbacks.length) {
+		unregister(key) {
+			let {callbacks} = this;
+
+			if (!callbacks[key]) {
+				console.warn(`callback: ${key} doesn't exist`);
+				return;
+			}
+
+			delete callbacks[key];
+
+			if (!Object.keys(callbacks).length) {
 				this.stop();
 			}
 		}
 
 		clear() {
-			this.callbacks = [];
+			this.callbacks = {};
 			this.stop();
 		}
 
@@ -46,7 +55,13 @@ var Singleton = (function() {
 
 		loop() {
 			this.raf = requestAnimationFrame(this.loop.bind(this));
-			this.callbacks.forEach(cb => cb.call(cb));
+			for (let i = 0,
+					 cbs = this.callbacks,
+					 keys = Object.keys(cbs),
+					 l = keys.length;
+				 i < l; i++) {
+				cbs[keys[i]].call(cbs[keys[i]]);
+			}
 		}
 	};
 }());
