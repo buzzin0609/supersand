@@ -28,6 +28,7 @@ const KeyboardActor = (function() {
 		}
 
 		keydown(e) {
+			if (this.dying) { return; }
 			this.direction = directions[e.key];
 			if (this.direction) {
 				this.active[this.direction] = true;
@@ -39,12 +40,16 @@ const KeyboardActor = (function() {
 		}
 
 		keyup(e) {
+			if (this.dying) { return; }
 			this.direction = directions[e.key];
 
 			if (this.direction) {
 				this.active[this.direction] = false;
 				this.pressed = this.pressed.filter(key => key !== this.direction);
 				this.setMoveSrc();
+			}
+			if (!this.pressed[0] && !this.dying && !this.attacking) {
+				this.resetX();
 			}
 		}
 

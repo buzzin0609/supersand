@@ -17,7 +17,7 @@ export default class Profile extends SuperComponent {
 
 		this.state = {
 			startHp: health,
-			health: 100,
+			health: health,
 			ki: 0,
 			exp: 0
 		};

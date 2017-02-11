@@ -52,6 +52,7 @@ const Goku = function(args = false) {
 			'down' : 1,
 			'left' : 3,
 			'normal' : 0,
+			'dying': 10,
 			'attack' : {
 				'up' : 7,
 				'right' : 9,

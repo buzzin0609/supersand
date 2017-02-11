@@ -1,7 +1,8 @@
 import KeyboardActor from './KeyboardActor';
 import Utils from '../utils/utils';
 import Collisionable from '../collisions/Collisionable';
-import { addProfileCard } from './StaticActorMethods';
+import { addProfileCard, removeProfileCard } from './StaticActorMethods';
+import GameState from '../shared/GameState';
 
 // const required = [
 //
@@ -26,7 +27,6 @@ class GameActor extends KeyboardActor {
 		this.comboState = 1;
 		this.comboQueued = false;
 		this.attacks = args.attacks || attacks;
-
 		this.resetAttackState();
 	}
 
@@ -69,6 +69,7 @@ class GameActor extends KeyboardActor {
 
 
 	beforeRender() {
+		if (this.dying) { return; }
 		if (this.pressed[0]) {
 			this.move();
 		}
@@ -85,6 +86,8 @@ class GameActor extends KeyboardActor {
 			this.profileRendered = true;
 			addProfileCard(this);
 		}
+
+
 	}
 
 	attack() {
@@ -112,6 +115,7 @@ class GameActor extends KeyboardActor {
 		if (this.enemies) {
 			this.handleEnemies();
 		}
+		super.handleState();
 	}
 
 	handleEnemies() {
@@ -125,6 +129,15 @@ class GameActor extends KeyboardActor {
 			} else if (enemy.isPulled) {
 				enemy.isPulled = false;
 			}
+		}
+	}
+
+	die() {
+		super.die();
+		if (this.dead) {
+			let setView = GameState.get('setView');
+			removeProfileCard(this);
+			setView('gameOver');
 		}
 	}
 

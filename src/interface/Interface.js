@@ -12,6 +12,7 @@ import BeforeSave from './BeforeSave';
 import SaveGame from './SaveGame';
 import ForgotPassword from './ForgotPassword';
 import Pause from './Pause';
+import GameOver from './GameOver';
 // var GameState = require('../shared/GameState');
 
 
@@ -27,7 +28,7 @@ class Interface extends SuperComponent {
 
 		this.On.set('setView', this.setView.bind(this));
 		this.addedToGameStart = false;
-
+		GameState.set('setView', this.setView.bind(this));
 	}
 
 	componentWillMount() {
@@ -92,6 +93,9 @@ class Interface extends SuperComponent {
 				break;
 			case 'game':
 				content = <GameInterface />;
+				break;
+			case 'gameOver':
+				content = <GameOver />;
 				break;
 			default:
 				content = (

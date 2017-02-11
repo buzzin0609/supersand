@@ -1,8 +1,13 @@
 import React from 'react';
 import SuperComponent from '../shared/SuperComponent';
 import Btn from './Btn';
+import { removeProfileCards } from '../actor/StaticActorMethods';
 
 class MainMenu extends SuperComponent {
+
+	componentWillMount() {
+		removeProfileCards();
+	}
 
 	render() {
 		return (

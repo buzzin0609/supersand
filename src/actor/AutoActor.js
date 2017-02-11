@@ -54,7 +54,7 @@ const AutoActor = (function() {
 				super.move();
 				this.patrol();
 			} else {
-				this.resetX(0);
+				this.resetX();
 
 			}
 		}

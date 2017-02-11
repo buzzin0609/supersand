@@ -22,6 +22,11 @@ const Vegeta = function(args = false) {
 			super.resetAttack();
 			this.width = normalWidth;
 		}
+
+		setDying() {
+			this.width = 35;
+			super.setDying();
+		}
 	}
 
 	if (args) {
@@ -57,6 +62,7 @@ const Vegeta = function(args = false) {
 			'3,8,7,8,12,6',
 			'3,5,7,7',
 			'3,8,7,8,12,6',
+			'10,10,10,10'
 		],
 		frameLen : 8,
 		frameTicks : 10,
@@ -70,6 +76,7 @@ const Vegeta = function(args = false) {
 			'down' : 0,
 			'left' : 2,
 			'normal' : 4,
+			'dying': 21,
 			'attack' : {
 				'up' : 9,
 				'right' : 5,

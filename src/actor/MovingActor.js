@@ -3,6 +3,7 @@ import Actor from './Actor';
 import Utils from '../utils/utils';
 import Collisionable from '../collisions/Collisionable';
 import { incrementAttributes } from './StaticActorMethods';
+import GameLoop from '../gameloop/GameLoop';
 
 const required = [
 	'srcLocations',
@@ -34,9 +35,10 @@ const MovingActor = (function() {
 			};
 			this.pressed = [];
 			this.previous = false;
+			this.dying = false;
+			this.dead = false;
 
-			Object.assign(this.attributes, attrDefaults);
-
+			this.attributes = Object.assign({}, attrDefaults, args.attributes);
 			this.setAttributes();
 		}
 
@@ -119,8 +121,12 @@ const MovingActor = (function() {
 		beforeRender() {
 			if (this.pressed[0]) {
 				this.move();
-			} else {
-				this.current.x = 0;
+			}
+		}
+
+		handleState() {
+			if (this.dying) {
+				this.die();
 			}
 		}
 
@@ -158,12 +164,10 @@ const MovingActor = (function() {
 		}
 
 		receiveHit(value) {
-			//temp put back to full for now
-			if (this.attributes.health < 0) {
-				this.handleHealth(100, 'add');
-				return;
-			}
 			this.handleHealth(value);
+			if (this.attributes.health <= 0 && !this.dying) {
+				this.setDying();
+			}
 		}
 
 		handleHealth(value, addRemove = 'remove') {
@@ -177,6 +181,18 @@ const MovingActor = (function() {
 			this.profileCard.setHealth(value, addRemove);
 		}
 
+		setDying() {
+			this.dying = true;
+			this.setSrc(this.srcLocations.dying);
+		}
+
+		die() {
+			this.setY(this.srcLocations.dying);
+			if (this.frameIndex > this.current.frames.length - 2) {
+				this.dead = true;
+				GameLoop.stop.call(GameLoop);
+			}
+		}
 	};
 }());
 

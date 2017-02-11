@@ -21,6 +21,22 @@ export function addProfileCard(actor) {
 	let key = slugify(actor.name);
 	if (document.getElementsByClassName(`profile-${key}`)[0]) { return; }
 	profileActors[key] = actor;
+	renderProfileCards();
+}
+
+export function removeProfileCard(actor) {
+	delete profileActors[slugify(actor.name)];
+	renderProfileCards();
+}
+
+export function removeProfileCards() {
+	profileActors = {};
+	renderProfileCards();
+}
+
+function renderProfileCards() {
+	if (!document.getElementsByClassName('profile-ui')[0]) { return; }
+	
 	let actors = Object.keys(profileActors).map((a, i) => {
 		return <Profile actor={profileActors[a]} key={i} />;
 	});
