@@ -3,7 +3,6 @@ import Actor from './Actor';
 import Utils from '../utils/utils';
 import Collisionable from '../collisions/Collisionable';
 import {incrementAttributes} from './StaticActorMethods';
-import GameLoop from '../gameloop/GameLoop';
 
 const required = [
     'srcLocations',

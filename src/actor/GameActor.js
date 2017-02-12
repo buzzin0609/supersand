@@ -5,6 +5,7 @@ import Collisionable from '../collisions/Collisionable';
 import {addProfileCard, removeProfileCard} from './StaticActorMethods';
 import GameState from '../shared/GameState';
 import GameLoop from '../gameloop/GameLoop';
+import '../levelling/registerLevelling';
 
 // const required = [
 //
@@ -21,6 +22,8 @@ const attacks = {
     'f': 'attack4'
 };
 
+
+
 class GameActor extends KeyboardActor {
     constructor(args) {
         Utils.requiredProps(requiredSrcLocations, args.srcLocations);
@@ -28,6 +31,12 @@ class GameActor extends KeyboardActor {
         this.facing = 'down';
         this.comboState = 1;
         this.comboQueued = false;
+
+		this.maxKi = args.maxKi || 100;
+		this.ki = 0;
+		
+		this.expToLevel = args.expToLevel || 200;
+		this.exp = args.exp || 0;
         //noinspection JSUnresolvedVariable
         this.attacks = args.attacks || attacks;
         this.resetAttackState();
@@ -148,6 +157,8 @@ class GameActor extends KeyboardActor {
             }
         }
     }
+	
+	
 
 	handleDeath() {
 		GameLoop.stop.call(GameLoop);
