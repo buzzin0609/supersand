@@ -32,11 +32,11 @@ class GameActor extends KeyboardActor {
         this.comboState = 1;
         this.comboQueued = false;
 
-		this.maxKi = args.maxKi || 100;
-		this.ki = 0;
+		this.attributes.maxKi = args.attributes.maxKi || 100;
+		this.attributes.ki = 0;
 
-		this.expToLevel = args.expToLevel || 200;
-		this.exp = args.exp || 0;
+		this.attributes.expToLevel = args.attributes.expToLevel || 200;
+		this.attributes.exp = args.exp || 0;
         //noinspection JSUnresolvedVariable
         this.attacks = args.attacks || attacks;
         this.resetAttackState();
@@ -77,7 +77,6 @@ class GameActor extends KeyboardActor {
             }
         }
     }
-
 
     beforeRender() {
         if (this.dying) {

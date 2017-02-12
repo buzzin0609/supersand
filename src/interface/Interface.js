@@ -13,6 +13,8 @@ import SaveGame from './SaveGame';
 import ForgotPassword from './ForgotPassword';
 import Pause from './Pause';
 import GameOver from './GameOver';
+import QuestInterface from '../quests/QuestInterface';
+
 // var GameState = require('../shared/GameState');
 
 
@@ -96,6 +98,9 @@ class Interface extends SuperComponent {
 				break;
 			case 'gameOver':
 				content = <GameOver />;
+				break;
+			case 'quest':
+				content = <QuestInterface />;
 				break;
 			default:
 				content = (

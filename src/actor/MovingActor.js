@@ -9,11 +9,13 @@ const required = [
     'attributes'
 ];
 
-const incrementors = {
+const incrementers = {
     health: 0.01,
     startHp: 0.01,
     speed: 0.001,
-    strength: 0.01
+    strength: 0.01,
+    maxKi: 0.01,
+    expToLevel: 0.1
 };
 
 const attrDefaults = {
@@ -52,7 +54,7 @@ const MovingActor = (function () {
         }
 
 		incrementAttributes(attributes) {
-			return incrementAttributes(attributes, incrementors);
+			return incrementAttributes(attributes, incrementers);
 		}
 
         setMoveSrc() {

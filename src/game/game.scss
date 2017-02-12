@@ -35,13 +35,14 @@
   right: 0;
   top: 0;
   width: 50%;
-  z-index: 5;
+  z-index: 4;
 }
 
 .profile-ui__actor {
   @include group;
   background-color: #103057;
   float: right;
+  opacity: 0.6;
   padding: 10px;
   &.enemy {
     background-color: #520875;

@@ -26,6 +26,7 @@ class Scene extends SuperComponent {
 
 	componentWillMount() {
 		GameState.set('scene', this);
+		GameState.get('setView')('quest');
 	}
 
 	componentDidMount() {
@@ -37,6 +38,7 @@ class Scene extends SuperComponent {
 		this.addActors();
 		this.handleObstacles();
 		this.scaleCanvas();
+		
 		Utils.debounce.on('resize', this.scaleCanvas.bind(this));
 	}
 

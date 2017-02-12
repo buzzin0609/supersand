@@ -1,6 +1,6 @@
 ##Legend of the Supersand Saiyan HTML5 game [IN PROGRESS]
 
-Just a little personal project to get familier with ReactJS and have some fun with HTML5 Canvas
+Just a little personal project to get familier with ReactJS and have some fun with HTML5 Canvas.
 See the current working state of the game [here](https://supersand.herokuapp.com)
 
 ##How to run

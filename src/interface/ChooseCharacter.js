@@ -38,7 +38,7 @@ class ChooseCharacter extends SuperComponent {
 		return (
 			<div id="choose-character">
 				<h2 className="title">Choose character</h2>
-				<p className="tagline">Which hero is going to save the day</p>
+				<p className="tagline">Which hero is going to be Supersand legend</p>
 				<div className="characters">
 					<div className="characters__scroll-wrap group">
 						{ this.outputCharacters() }
