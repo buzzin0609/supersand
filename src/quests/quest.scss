@@ -4,6 +4,9 @@
   .quest-interface {
     align-self: flex-start;
   }
+  .overlay {
+    position: fixed !important;
+  }
 }
 
 .quest__body {

@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e70e2d80-e614-484b-9180-977ae7de8b7c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app.css" afterPath="$PROJECT_DIR$/public/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app.css.map" afterPath="$PROJECT_DIR$/public/app.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/interface/interface.scss" afterPath="$PROJECT_DIR$/src/interface/interface.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/quests/quest.scss" afterPath="$PROJECT_DIR$/src/quests/quest.scss" />
     </list>
     <ignored path="supersand-game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -84,7 +89,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Quest.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Quest.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/quests/Quest.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="442">
@@ -96,10 +101,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="game.scss" pinned="false" current-in-tab="false">
+          <file leaf-file-name="game.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/game/game.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="321">
+                <state relative-caret-position="564">
                   <caret line="56" column="14" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
                   <folding />
                 </state>
@@ -144,21 +149,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="quest.scss" pinned="false" current-in-tab="false">
+          <file leaf-file-name="quest.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/quests/quest.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="393">
-                  <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+                <state relative-caret-position="119">
+                  <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/public/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="428">
-                  <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+                <state relative-caret-position="105">
+                  <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -167,8 +172,8 @@
           <file leaf-file-name="interface.scss" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/interface/interface.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="283">
-                  <caret line="108" column="23" selection-start-line="108" selection-start-column="23" selection-end-line="108" selection-end-column="23" />
+                <state relative-caret-position="649">
+                  <caret line="108" column="26" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
                   <folding />
                 </state>
               </provider>
@@ -236,9 +241,9 @@
         <option value="$PROJECT_DIR$/src/quests/Quests.js" />
         <option value="$PROJECT_DIR$/src/quests/Quest.js" />
         <option value="$PROJECT_DIR$/src/game/game.scss" />
+        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/interface/interface.scss" />
         <option value="$PROJECT_DIR$/src/quests/quest.scss" />
-        <option value="$PROJECT_DIR$/public/index.html" />
       </list>
     </option>
   </component>
@@ -696,16 +701,16 @@
       <updated>1486814115973</updated>
       <workItem from="1486829356368" duration="30857000" />
       <workItem from="1486898649125" duration="1727000" />
-      <workItem from="1486900422007" duration="15849000" />
+      <workItem from="1486900422007" duration="16502000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48433000" />
+    <option name="totallyTimeSpent" value="49086000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1935" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18394998" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1146,30 +1151,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/game.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="56" column="14" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/interface/interface.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="108" column="23" selection-start-line="108" selection-start-column="23" selection-end-line="108" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/quests/quest.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/quests/Quest.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -1180,10 +1161,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/game.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="56" column="14" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        <state relative-caret-position="105">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/interface/interface.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="108" column="26" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/quests/quest.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
           <folding />
         </state>
       </provider>
