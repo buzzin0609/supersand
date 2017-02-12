@@ -1,1 +1,2 @@
 import './pause';
+import './handleGameHeight';

@@ -23,7 +23,6 @@ const attacks = {
 };
 
 
-
 class GameActor extends KeyboardActor {
     constructor(args) {
         Utils.requiredProps(requiredSrcLocations, args.srcLocations);
@@ -151,6 +150,8 @@ class GameActor extends KeyboardActor {
 
         while (--i >= 0) {
             let enemy = enemies[i];
+            debugger;
+			
             if (enemy.hittable) {
                 enemy.receiveHit.call(enemy, this.generateHitValue());
             }

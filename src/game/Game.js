@@ -5,6 +5,7 @@ import GameControls from '../gameControls/GameControls';
 import Stages from '../Stages/Stages';
 import ProfileInterface from './ProfileInterface';
 
+
 export default class Game extends Component {
 	constructor(props) {
 		super(props);
@@ -17,6 +18,7 @@ export default class Game extends Component {
 	componentDidMount() {
 		// console.log('mounted game');
 		GameLoop.start.call(GameLoop);
+		
 	}
 
 	componentWillUnmount() {

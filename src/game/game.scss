@@ -1,7 +1,14 @@
+html {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
 #game {
   background-color: #000;
   height: 100vh;
   width: 100%;
+
+
 }
 
 #Stage-1-wrapper {
