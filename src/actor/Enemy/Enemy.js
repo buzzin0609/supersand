@@ -154,6 +154,11 @@ export default class Enemy extends AutoActor {
 			GameLoop.unregister(this.name, this.render.bind(this));
 			canvas.parentElement.removeChild(canvas);
 			removeProfileCard(this);
+            GameState.character.enemies.forEach((enemy, i) => {
+               if (this.name === enemy.name) {
+                   GameState.character.enemies.splice(i, 1);
+               }
+            });
 			On.trigger(`${this.name}-unmount`);
 		}, 2000);
 	}

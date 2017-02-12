@@ -25,15 +25,16 @@ class Quest extends Component {
 						{this.props.objectives}
 					</ul>
 				</div>
-				<Btn setView="game">Accept Quest</Btn>
+				<p className="quest__reward">Exp Reward: {this.props.expReward}</p>
+				<Btn setView="game">Continue</Btn>
 			</div>
 		);
 
 	}
 }
 
-export default function(id, title, description, objectives) {
-	let quest = <Quest id={id} title={title} description={description} objectives={objectives} />;
+export default function(id, title, description, objectives, expReward) {
+	let quest = <Quest id={id} title={title} description={description} objectives={objectives} expReward={expReward} />;
 	Quests.add(quest);
 	return quest;
 }

@@ -6,7 +6,7 @@ import On from '../../utils/On';
 const Goon = function(startX, startY, patrol) {
 
 	let enemy = new Enemy({
-		name: `Goon-${Date.now()}`,
+		name: `Goon-${Math.random()}`,
 		imgUrl : 'enemies/enemy-master-sprite-sheet.png',
 		profilePic : 'enemies/enemy-port.png',
 		attributes : {

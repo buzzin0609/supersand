@@ -11,7 +11,7 @@ let description = (
 );
 
 let objectives = (
-	<li>Defeat all enemies in the training tournament.</li>
+	<li>Show the old man Roshi that you can beat these worthless chumps.</li>
 );
 
-export default Quest(1, title, description, objectives);
+export default Quest(1, title, description, objectives, 100);

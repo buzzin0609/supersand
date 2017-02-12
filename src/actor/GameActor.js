@@ -22,6 +22,16 @@ const attacks = {
     'f': 'attack4'
 };
 
+const oppositeDirections = {
+	'up': 'down',
+	'right': 'left',
+	'down': 'up',
+	'left': 'right'
+};
+
+function isOpposite(direction1, direction2) {
+	return oppositeDirections[direction1] === direction2;
+}
 
 class GameActor extends KeyboardActor {
     constructor(args) {
@@ -150,9 +160,8 @@ class GameActor extends KeyboardActor {
 
         while (--i >= 0) {
             let enemy = enemies[i];
-            debugger;
 			
-            if (enemy.hittable) {
+            if (enemy.hittable && isOpposite(this.facing, enemy.facing)) {
                 enemy.receiveHit.call(enemy, this.generateHitValue());
             }
         }
