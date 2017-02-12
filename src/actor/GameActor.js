@@ -34,7 +34,7 @@ class GameActor extends KeyboardActor {
 
 		this.maxKi = args.maxKi || 100;
 		this.ki = 0;
-		
+
 		this.expToLevel = args.expToLevel || 200;
 		this.exp = args.exp || 0;
         //noinspection JSUnresolvedVariable
@@ -157,8 +157,6 @@ class GameActor extends KeyboardActor {
             }
         }
     }
-	
-	
 
 	handleDeath() {
 		GameLoop.stop.call(GameLoop);
@@ -166,6 +164,8 @@ class GameActor extends KeyboardActor {
 		removeProfileCard(this);
 		setView('gameOver');
 	}
+	
+
 
 }
 

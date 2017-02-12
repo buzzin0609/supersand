@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e70e2d80-e614-484b-9180-977ae7de8b7c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/levelling/addExp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/levelling/registerLevelling.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/levelling/levelUp.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actor/Enemy/Enemy.js" afterPath="$PROJECT_DIR$/src/actor/Enemy/Enemy.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actor/GameActor.js" afterPath="$PROJECT_DIR$/src/actor/GameActor.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actor/MovingActor.js" afterPath="$PROJECT_DIR$/src/actor/MovingActor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actor/Profile.js" afterPath="$PROJECT_DIR$/src/actor/Profile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/interface/GameOver.js" afterPath="$PROJECT_DIR$/src/interface/GameOver.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actor/StaticActorMethods.js" afterPath="$PROJECT_DIR$/src/actor/StaticActorMethods.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/levelling/addExp.js" afterPath="$PROJECT_DIR$/src/levelling/addExp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/levelling/registerLevelling.js" afterPath="$PROJECT_DIR$/src/levelling/registerLevelling.js" />
     </list>
     <ignored path="supersand-game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,14 +29,14 @@
     <favorites_list name="supersand-game" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5368488">
+    <splitter split-orientation="horizontal" split-proportion="0.58455646">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="GameActor.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="GameActor.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/actor/GameActor.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+                <state relative-caret-position="331">
+                  <caret line="154" column="30" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
                   <folding>
                     <element signature="e#22#66#0" expanded="true" />
                   </folding>
@@ -47,8 +47,8 @@
           <file leaf-file-name="addExp.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/levelling/addExp.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+                <state relative-caret-position="255">
+                  <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
                   <folding>
                     <element signature="e#36#80#0" expanded="true" />
                   </folding>
@@ -56,22 +56,14 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="registerLevelling.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/levelling/registerLevelling.js">
+          <file leaf-file-name="levelUp.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/levelling/levelUp.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="KeyboardActor.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/actor/KeyboardActor.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-                  <folding />
+                <state relative-caret-position="136">
+                  <caret line="8" column="74" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
+                  <folding>
+                    <element signature="e#0#44#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -89,8 +81,8 @@
           <file leaf-file-name="MovingActor.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/actor/MovingActor.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="238">
-                  <caret line="131" column="23" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="23" />
+                <state relative-caret-position="189">
+                  <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
                   <folding>
                     <element signature="e#22#50#0" expanded="true" />
                   </folding>
@@ -113,9 +105,11 @@
           <file leaf-file-name="StaticActorMethods.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/actor/StaticActorMethods.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="559">
-                  <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
-                  <folding />
+                <state relative-caret-position="272">
+                  <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -123,7 +117,7 @@
           <file leaf-file-name="Profile.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/actor/Profile.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="578">
+                <state relative-caret-position="68">
                   <caret line="40" column="24" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="24" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
@@ -149,8 +143,8 @@
           <file leaf-file-name="Enemy.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/actor/Enemy/Enemy.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="155" column="47" selection-start-line="155" selection-start-column="47" selection-end-line="155" selection-end-column="47" />
+                <state relative-caret-position="318">
+                  <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
                   <folding>
                     <element signature="e#0#37#0" expanded="true" />
                   </folding>
@@ -231,16 +225,17 @@
         <option value="$PROJECT_DIR$/src/actor/Actor.js" />
         <option value="$PROJECT_DIR$/src/gameloop/GameLoop.js" />
         <option value="$PROJECT_DIR$/src/utils/On.js" />
-        <option value="$PROJECT_DIR$/src/actor/StaticActorMethods.js" />
         <option value="$PROJECT_DIR$/src/actor/Enemy/Goon.js" />
         <option value="$PROJECT_DIR$/src/game/game.scss" />
-        <option value="$PROJECT_DIR$/src/actor/Enemy/Enemy.js" />
         <option value="$PROJECT_DIR$/src/interface/GameOver.js" />
-        <option value="$PROJECT_DIR$/src/levelling/registerLevelling.js" />
-        <option value="$PROJECT_DIR$/src/actor/MovingActor.js" />
         <option value="$PROJECT_DIR$/src/actor/Profile.js" />
-        <option value="$PROJECT_DIR$/src/levelling/addExp.js" />
         <option value="$PROJECT_DIR$/src/actor/GameActor.js" />
+        <option value="$PROJECT_DIR$/src/levelling/registerLevelling.js" />
+        <option value="$PROJECT_DIR$/src/levelling/addExp.js" />
+        <option value="$PROJECT_DIR$/src/actor/MovingActor.js" />
+        <option value="$PROJECT_DIR$/src/actor/StaticActorMethods.js" />
+        <option value="$PROJECT_DIR$/src/levelling/levelUp.js" />
+        <option value="$PROJECT_DIR$/src/actor/Enemy/Enemy.js" />
       </list>
     </option>
   </component>
@@ -526,19 +521,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1486814115973</updated>
-      <workItem from="1486829356368" duration="28372000" />
+      <workItem from="1486829356368" duration="30774000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28372000" />
+    <option name="totallyTimeSpent" value="30774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18385416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -785,31 +780,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actor/Enemy/Enemy.js">
+    <entry file="file://$PROJECT_DIR$/src/levelling/registerLevelling.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="155" column="47" selection-start-line="155" selection-start-column="47" selection-end-line="155" selection-end-column="47" />
+        <state relative-caret-position="17">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actor/MovingActor.js">
+    <entry file="file://$PROJECT_DIR$/src/levelling/addExp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="131" column="23" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="23" />
+        <state relative-caret-position="255">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
           <folding>
-            <element signature="e#22#50#0" expanded="true" />
+            <element signature="e#36#80#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actor/StaticActorMethods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -821,28 +808,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/levelling/registerLevelling.js">
+    <entry file="file://$PROJECT_DIR$/src/actor/MovingActor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/levelling/addExp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        <state relative-caret-position="189">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding>
-            <element signature="e#36#80#0" expanded="true" />
+            <element signature="e#22#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actor/Profile.js">
+    <entry file="file://$PROJECT_DIR$/src/actor/StaticActorMethods.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="40" column="24" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="24" />
+        <state relative-caret-position="272">
+          <caret line="16" column="62" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -851,10 +830,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/actor/GameActor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+        <state relative-caret-position="331">
+          <caret line="154" column="30" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
           <folding>
             <element signature="e#22#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actor/Profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="40" column="24" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/levelling/levelUp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="74" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actor/Enemy/Enemy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

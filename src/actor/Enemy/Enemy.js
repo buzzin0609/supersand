@@ -145,6 +145,7 @@ export default class Enemy extends AutoActor {
     handleDeath() {
 		this.unMount();
 		On.trigger('enemy-defeated', this.expValue);
+		
 	}
 
 	unMount() {

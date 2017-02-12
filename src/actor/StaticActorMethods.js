@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Profile from './Profile';
 import slugify from '../utils/slugify';
+import Utils from '../utils/utils';
 
 export function handleAttack(attacker, attackee) {
 	let amount = attacker.baseHit + (attacker.strength * 0.1);
@@ -12,7 +13,8 @@ export function incrementAttributes(attributes, incrementers) {
 	for (let i = 0, keys = Object.keys(attributes), len = keys.length; i < len; i++) {
 		if (incrementers[keys[i]]) {
 			let attribute = attributes[keys[i]];
-			attributes[keys[i]] += attribute * incrementers[keys[i]];
+			attribute += attribute * incrementers[keys[i]];
+			attributes[keys[i]] = Utils.toFixed(attribute, 3);
 		}
 	}
 	return attributes;

@@ -13,7 +13,7 @@ const incrementors = {
     health: 0.01,
     startHp: 0.01,
     speed: 0.001,
-    strength: 0.001
+    strength: 0.01
 };
 
 const attrDefaults = {
@@ -46,10 +46,14 @@ const MovingActor = (function () {
         setAttributes() {
             let {attributes} = this;
             for (let i = 1; i <= this.level; i++) {
-                attributes = incrementAttributes(attributes, incrementors);
+                attributes = this.incrementAttributes(attributes);
             }
             this.attributes = attributes;
         }
+
+		incrementAttributes(attributes) {
+			return incrementAttributes(attributes, incrementors);
+		}
 
         setMoveSrc() {
             if (this.pressed[0]) {
