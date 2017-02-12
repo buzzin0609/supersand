@@ -13,6 +13,9 @@ export default class Btn extends SuperComponent {
 	}
 
 	render() {
+		if ('ontouchstart' in document.documentElement) {
+			return <span className="btn" onTouch={ this.handleClick.bind(this) }>{ this.props.children }</span>
+		}
 		return <span className="btn" onClick={ this.handleClick.bind(this) }>{ this.props.children }</span>
 	}
 }

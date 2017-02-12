@@ -10,7 +10,7 @@ class Quest extends Component {
 		this.id = props.id;
 
 	}
-	
+
 	render() {
 		return (
 			<div className="quest__body">
@@ -19,10 +19,12 @@ class Quest extends Component {
 				<div className="quest__description">
 					{this.props.description}
 				</div>
-				<ul className="quest__objectives">
+				<div className="quest__objectives">
 					<h3 className="quest__title title--objectives">Objectives</h3>
-					{this.props.objectives}
-				</ul>
+					<ul>
+						{this.props.objectives}
+					</ul>
+				</div>
 				<Btn setView="game">Accept Quest</Btn>
 			</div>
 		);
