@@ -94,6 +94,7 @@ export default class Joystick extends SuperComponent {
 
 	moveCharacter(sides) {
 		let { character } = GameState;
+		character.startRender();
 		character.pressed = [];
 		Object.keys(character.active).forEach(side => {
 			if (sides.includes(side)) {
@@ -111,6 +112,7 @@ export default class Joystick extends SuperComponent {
 
 	stopCharacter() {
 		let { character } = GameState;
+		character.stopRender();
 		character.pressed = [];
 		Object.keys(character.active).forEach(side => character.active[side] = false);
 	}

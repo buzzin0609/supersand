@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e70e2d80-e614-484b-9180-977ae7de8b7c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actor/GameActor.js" afterPath="$PROJECT_DIR$/src/actor/GameActor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actor/KeyboardActor.js" afterPath="$PROJECT_DIR$/src/actor/KeyboardActor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameControls/Joystick.js" afterPath="$PROJECT_DIR$/src/gameControls/Joystick.js" />
     </list>
     <ignored path="supersand-game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,7 +29,7 @@
           <file leaf-file-name="QuestInterface.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/quests/QuestInterface.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
+                <state relative-caret-position="488">
                   <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
@@ -84,11 +83,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="KeyboardActor.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="KeyboardActor.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/actor/KeyboardActor.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="386">
-                  <caret line="51" column="86" selection-start-line="51" selection-start-column="86" selection-end-line="51" selection-end-column="86" />
+                <state relative-caret-position="148">
+                  <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
                   <folding />
                 </state>
               </provider>
@@ -124,11 +123,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Quest.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Quest.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/quests/Quest.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+                <state relative-caret-position="284">
+                  <caret line="27" column="53" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -232,23 +231,25 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="interface.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/interface/interface.scss">
+          <file leaf-file-name="GameActor.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/actor/GameActor.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1836">
-                  <caret line="108" column="26" selection-start-line="108" selection-start-column="26" selection-end-line="108" selection-end-column="26" />
-                  <folding />
+                <state relative-caret-position="355">
+                  <caret line="157" column="13" selection-start-line="157" selection-start-column="13" selection-end-line="157" selection-end-column="13" />
+                  <folding>
+                    <element signature="e#22#66#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="GameActor.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/actor/GameActor.js">
+          <file leaf-file-name="Joystick.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/gameControls/Joystick.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="338">
-                  <caret line="156" column="35" selection-start-line="156" selection-start-column="35" selection-end-line="156" selection-end-column="35" />
+                <state relative-caret-position="459">
+                  <caret line="114" column="31" selection-start-line="114" selection-start-column="31" selection-end-line="114" selection-end-column="31" />
                   <folding>
-                    <element signature="e#22#66#0" expanded="true" />
+                    <element signature="e#0#26#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -314,6 +315,7 @@
         <option value="$PROJECT_DIR$/src/actor/Actor.js" />
         <option value="$PROJECT_DIR$/src/actor/KeyboardActor.js" />
         <option value="$PROJECT_DIR$/src/actor/GameActor.js" />
+        <option value="$PROJECT_DIR$/src/gameControls/Joystick.js" />
       </list>
     </option>
   </component>
@@ -446,29 +448,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Stages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="supersand-game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="supersand-game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stage1" />
+              <option name="myItemId" value="gameControls" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -679,12 +659,12 @@
       <workItem from="1486898649125" duration="1727000" />
       <workItem from="1486900422007" duration="16502000" />
       <workItem from="1486926737334" duration="10146000" />
-      <workItem from="1487018159544" duration="6690000" />
+      <workItem from="1487018159544" duration="7435000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65922000" />
+    <option name="totallyTimeSpent" value="66667000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1935" height="1056" extended-state="0" />
@@ -728,13 +708,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/levelling/registerLevelling.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/levelling/levelUp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1032,26 +1005,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/quests/QuestInterface.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/quests/Quest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/shared/GameState.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -1133,18 +1086,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/actor/KeyboardActor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="51" column="86" selection-start-line="51" selection-start-column="86" selection-end-line="51" selection-end-column="86" />
+        <state relative-caret-position="148">
+          <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/quests/QuestInterface.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/quests/Quest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="27" column="53" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/actor/GameActor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="156" column="35" selection-start-line="156" selection-start-column="35" selection-end-line="156" selection-end-column="35" />
+        <state relative-caret-position="355">
+          <caret line="157" column="13" selection-start-line="157" selection-start-column="13" selection-end-line="157" selection-end-column="13" />
           <folding>
             <element signature="e#22#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gameControls/Joystick.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="114" column="31" selection-start-line="114" selection-start-column="31" selection-end-line="114" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
