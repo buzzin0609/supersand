@@ -49,10 +49,10 @@ const KeyboardActor = (function() {
 				this.pressed = this.pressed.filter(key => key !== this.direction);
 				this.setMoveSrc();
 			}
-			if (!this.pressed[0] && !this.dying && !this.attacking) {
+			if (!this.pressed[0] && !this.dying && !this.attacking && !this.isPulled) {
 				this.stopRender();
 			}
-			
+
 		}
 
 		getDirection(value) {

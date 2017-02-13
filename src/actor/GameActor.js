@@ -40,7 +40,7 @@ class GameActor extends KeyboardActor {
         this.facing = 'down';
         this.comboState = 1;
         this.comboQueued = false;
-
+		this.isPulled = false;
 		this.attributes.maxKi = args.attributes.maxKi || 100;
 		this.attributes.ki = 0;
 
@@ -66,8 +66,6 @@ class GameActor extends KeyboardActor {
     setMoveSrc() {
         if (this.pressed[0] && !this.attacking) {
             this.setSrc(this.srcLocations[this.pressed[0]]);
-            // console.log('set src', this);
-
         }
     }
 
@@ -149,13 +147,17 @@ class GameActor extends KeyboardActor {
 
         while (--i >= 0) {
             let enemy = enemies[i];
+			let isPulled = false;
             if (Collisionable.detect(this.position, enemy.pullArea)) {
                 enemy.isPulled = true;
 				enemy.startRender();
+				isPulled = true;
             } else if (enemy.isPulled) {
                 enemy.isPulled = false;
 				enemy.stopRender();
             }
+
+			this.isPulled = isPulled;
         }
     }
 

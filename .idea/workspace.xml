@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e70e2d80-e614-484b-9180-977ae7de8b7c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/will0.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/will0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Stages/Stage1/Stage1.js" afterPath="$PROJECT_DIR$/src/Stages/Stage1/Stage1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actor/Actor.js" afterPath="$PROJECT_DIR$/src/actor/Actor.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actor/GameActor.js" afterPath="$PROJECT_DIR$/src/actor/GameActor.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actor/KeyboardActor.js" afterPath="$PROJECT_DIR$/src/actor/KeyboardActor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actor/RandomCharacters/Roshi.js" afterPath="$PROJECT_DIR$/src/actor/RandomCharacters/Roshi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/actor/StaticActorMethods.js" afterPath="$PROJECT_DIR$/src/actor/StaticActorMethods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameloop/GameLoop.js" afterPath="$PROJECT_DIR$/src/gameloop/GameLoop.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scene/Scene.js" afterPath="$PROJECT_DIR$/src/scene/Scene.js" />
     </list>
     <ignored path="supersand-game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,8 +87,8 @@
           <file leaf-file-name="KeyboardActor.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/actor/KeyboardActor.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="539">
-                  <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+                <state relative-caret-position="386">
+                  <caret line="51" column="86" selection-start-line="51" selection-start-column="86" selection-end-line="51" selection-end-column="86" />
                   <folding />
                 </state>
               </provider>
@@ -252,8 +245,8 @@
           <file leaf-file-name="GameActor.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/actor/GameActor.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="454">
-                  <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+                <state relative-caret-position="338">
+                  <caret line="156" column="35" selection-start-line="156" selection-start-column="35" selection-end-line="156" selection-end-column="35" />
                   <folding>
                     <element signature="e#22#66#0" expanded="true" />
                   </folding>
@@ -319,8 +312,8 @@
         <option value="$PROJECT_DIR$/src/Stages/Stage1/Stage1.js" />
         <option value="$PROJECT_DIR$/src/actor/StaticActorMethods.js" />
         <option value="$PROJECT_DIR$/src/actor/Actor.js" />
-        <option value="$PROJECT_DIR$/src/actor/GameActor.js" />
         <option value="$PROJECT_DIR$/src/actor/KeyboardActor.js" />
+        <option value="$PROJECT_DIR$/src/actor/GameActor.js" />
       </list>
     </option>
   </component>
@@ -686,12 +679,12 @@
       <workItem from="1486898649125" duration="1727000" />
       <workItem from="1486900422007" duration="16502000" />
       <workItem from="1486926737334" duration="10146000" />
-      <workItem from="1487018159544" duration="6107000" />
+      <workItem from="1487018159544" duration="6690000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65339000" />
+    <option name="totallyTimeSpent" value="65922000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1935" height="1056" extended-state="0" />
@@ -1138,21 +1131,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actor/GameActor.js">
+    <entry file="file://$PROJECT_DIR$/src/actor/KeyboardActor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-          <folding>
-            <element signature="e#22#66#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="386">
+          <caret line="51" column="86" selection-start-line="51" selection-start-column="86" selection-end-line="51" selection-end-column="86" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actor/KeyboardActor.js">
+    <entry file="file://$PROJECT_DIR$/src/actor/GameActor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
-          <folding />
+        <state relative-caret-position="338">
+          <caret line="156" column="35" selection-start-line="156" selection-start-column="35" selection-end-line="156" selection-end-column="35" />
+          <folding>
+            <element signature="e#22#66#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
