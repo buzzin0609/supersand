@@ -23,6 +23,10 @@ var Singleton = (function () {
 			this.callbacks[key] = cb;
 		}
 
+		registerOnce(key, cb) {
+			this.register(`${key}__once`, cb);
+		}
+
 		unregister(key) {
 			let {callbacks} = this;
 
@@ -30,7 +34,7 @@ var Singleton = (function () {
 				console.warn(`callback: ${key} doesn't exist`);
 				return;
 			}
-
+			callbacks[key] = null;
 			delete callbacks[key];
 
 			if (!Object.keys(callbacks).length) {
@@ -61,6 +65,9 @@ var Singleton = (function () {
 					 l = keys.length;
 				 i < l; i++) {
 				cbs[keys[i]].call(cbs[keys[i]]);
+				if (keys[i].includes('__once')) {
+					this.unregister(keys[i]);
+				}
 			}
 		}
 	};

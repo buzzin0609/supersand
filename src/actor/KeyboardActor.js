@@ -31,6 +31,7 @@ const KeyboardActor = (function() {
 			if (this.dying) { return; }
 			this.direction = directions[e.key];
 			if (this.direction) {
+				this.startRender();
 				this.active[this.direction] = true;
 				if (!this.pressed.includes(this.direction)) {
 					this.pressed.unshift(this.direction);
@@ -49,8 +50,9 @@ const KeyboardActor = (function() {
 				this.setMoveSrc();
 			}
 			if (!this.pressed[0] && !this.dying && !this.attacking) {
-				this.resetX();
+				this.stopRender();
 			}
+			
 		}
 
 		getDirection(value) {

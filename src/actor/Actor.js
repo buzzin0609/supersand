@@ -1,8 +1,11 @@
+import GameLoop from '../gameloop/GameLoop';
 var buildFrameArray = require('./buildFrameArray');
 var Utils = require('../utils/utils');
+import { timeout } from './StaticActorMethods';
 
 var preRenderCanvas = document.createElement('canvas');
 var preRenderCTX = preRenderCanvas.getContext('2d');
+
 
 var required = [
     'name',
@@ -17,6 +20,7 @@ class Actor {
         args = args || {};
         Utils.requiredProps(required, args);
         this.name = args.name;
+		this.type = args.type || 'actor';
         this.imgUrl = args.imgUrl;
         this.profilePic = args.profilePic;
         this.profileRendered = false;
@@ -48,16 +52,16 @@ class Actor {
         this.direction = false;
         this.srcLocations = args.srcLocations;
         this.initialised = Date.now();
+		this.rendering = false;
 
         this.level = args.level || 1;
-
     }
 
     addEnemies(enemies) {
         this.enemies = enemies;
     }
 
-    addScene(scene) {
+    async addScene(scene) {
         this.scene = scene;
         this.ctx = this.scene.canvas.getContext('2d');
         this.img = document.createElement('img');
@@ -66,7 +70,16 @@ class Actor {
         };
         this.img.src = 'img/' + this.imgUrl;
         this.setPosition();
-
+		
+		await timeout(500);
+		let register;
+		if (this.type !== 'static') {
+			register = GameLoop.registerOnce;
+		} else {
+			this.rendering = true;
+			register = GameLoop.register;
+		}
+		register.call(GameLoop, this.name, this.render.bind(this));
         // Utils.debounce.on('resize', this.setPosition.bind(this));
     }
 
@@ -79,6 +92,22 @@ class Actor {
         let box = this.attributes.speed * 5;
         this.ctx.clearRect(this.position.x - box / 2, this.position.y - box / 2, this.width + box, this.height + box);
     }
+
+	startRender() {
+		if (!this.rendering) {
+			this.rendering = true;
+			GameLoop.register.call(GameLoop, this.name, this.render.bind(this));
+		}
+	}
+
+	stopRender() {
+		if (this.rendering) {
+			this.rendering = false;
+			GameLoop.unregister.call(GameLoop, this.name);
+			this.resetX();
+			this.render();
+		}
+	}
 
     render() {
         this.beforeRender();

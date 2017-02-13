@@ -81,6 +81,7 @@ class GameActor extends KeyboardActor {
         let attack = attacks[e.key];
         if (!this.attacking) {
             this.attackType = attack;
+            this.startRender();
             if (attack) {
                 this.attacking = true;
             }
@@ -117,6 +118,9 @@ class GameActor extends KeyboardActor {
         this.attackCount++;
         if (this.attackCount >= this.currentAttackLen) {
             this.resetAttack();
+			if (!this.pressed[0]) {
+            	this.stopRender();
+			}
         }
     }
 
@@ -147,9 +151,10 @@ class GameActor extends KeyboardActor {
             let enemy = enemies[i];
             if (Collisionable.detect(this.position, enemy.pullArea)) {
                 enemy.isPulled = true;
-
+				enemy.startRender();
             } else if (enemy.isPulled) {
                 enemy.isPulled = false;
+				enemy.stopRender();
             }
         }
     }

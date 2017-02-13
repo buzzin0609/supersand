@@ -24,6 +24,7 @@ class Stage1 extends Stage {
 				let newGoon = goons[0];
 				newGoon.clear();
 				newGoon.position.x = 300;
+				newGoon.render();
 				this.setNextGoon();
 			} else {
 				alert('Quest completed');

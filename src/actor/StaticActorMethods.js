@@ -9,6 +9,12 @@ export function handleAttack(attacker, attackee) {
 	attackee.health -= amount;
 }
 
+export function timeout(time) {
+	return new Promise(resolve => setTimeout(function() {
+		requestAnimationFrame(resolve);
+	}, time));
+}
+
 export function incrementAttributes(attributes, incrementers) {
 	for (let i = 0, keys = Object.keys(attributes), len = keys.length; i < len; i++) {
 		if (incrementers[keys[i]]) {

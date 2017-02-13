@@ -1,7 +1,6 @@
 import React from 'react';
 import SuperComponent from '../shared/SuperComponent';
 const Scenes = require('./Scenes');
-const GameLoop = require('../gameloop/GameLoop');
 import Utils from '../utils/utils';
 import Quadrant from '../collisions/Quadrant';
 import Obstacle from '../collisions/Obstacle';
@@ -53,18 +52,19 @@ class Scene extends SuperComponent {
 			notCharacters.forEach(actor => {
 				let actorScene = this.createNewScene();
 				actor.addScene(actorScene);
-				GameLoop.register(actor.name, actor.render.bind(actor));
+
 				if (actor.events) {
 					actor.events();
 				}
 
 			});
+
 		}
 
 		this.props.actors.forEach(actor => {
 			actor.addScene(this);
 			actor.addEnemies(this.props.enemies);
-			GameLoop.register(actor.name, actor.render.bind(actor));
+
 			if (actor.events) {
 				actor.events();
 			}
@@ -144,8 +144,6 @@ class Scene extends SuperComponent {
 
 	removeActors() {
 		this.props.actors.forEach(actor => {
-			// console.log('unregistering actor', actor);
-			GameLoop.unregister(actor.name, actor.render.bind(actor));
 			actor.unMount();
 		});
 	}

@@ -3,6 +3,7 @@ import Actor from '../Actor';
 const Roshi = function(startX, startY) {
 	return new Actor({
 		name: 'Roshi',
+		type: 'static',
 		imgUrl : 'characters/roshi.png',
 		profilePic : 'gok-port-ss.png',
 		attributes : {
