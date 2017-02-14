@@ -82,13 +82,15 @@ html {
   }
   position: relative;
   width: 150px;
-  &:after {
+  span {
     color: #fff;
     font-size: 0.65rem;
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
   }
 
 }
@@ -102,9 +104,6 @@ html {
 }
 
 .health-bar {
-  &:after {
-    content: 'health';
-  }
 
   .enemy & {
     margin-bottom: 0;
@@ -116,9 +115,7 @@ html {
     display: none;
   }
   height: 12.5px;
-  &:after {
-    content: 'ki energy';
-  }
+
 }
 
 .health-bar__inner {
@@ -136,9 +133,7 @@ html {
   float: none;
   height: 12.5px;
   width: 100%;
-  &:after {
-    content: 'exp';
-  }
+
 }
 
 .exp-bar__inner {

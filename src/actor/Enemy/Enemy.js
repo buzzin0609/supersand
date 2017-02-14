@@ -5,8 +5,7 @@ import Collisionable from '../../collisions/Collisionable';
 import Utils from '../../utils/utils';
 import { addProfileCard, removeProfileCard } from '../StaticActorMethods';
 import On from '../../utils/On';
-
-const baseExp = 50;
+import { mobXp } from '../../levelling/levelUp';
 
 export default class Enemy extends AutoActor {
     constructor(args) {
@@ -23,7 +22,7 @@ export default class Enemy extends AutoActor {
         this.offsetW = Math.floor(this.width / 2);
         this.offsetH = Math.floor(this.height / 4);
 
-		this.expValue = Math.floor(baseExp + (0.10 * this.level * baseExp));
+		this.expValue = Math.floor(mobXp(this.level));
     }
 
     beforeRender() {

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Btn from '../interface/Btn';
 import Quests from './Quests';
+import GameState from '../shared/GameState';
+import { getExp } from '../levelling/levelUp';
 
 
 class Quest extends Component {
@@ -25,7 +27,7 @@ class Quest extends Component {
 						{this.props.objectives}
 					</ul>
 				</div>
-				<p className="quest__reward">Exp Reward: {this.props.expReward}</p>
+				<p className="quest__reward">Exp Reward: {Math.round(getExp(GameState.character.level)/10)}</p>
 				<Btn setView="game">Continue</Btn>
 			</div>
 		);

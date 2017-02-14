@@ -1,6 +1,7 @@
 //noinspection JSLint
 import MovingActor from "./MovingActor";
 import Utils from "../utils/utils";
+import { timeout } from './StaticActorMethods';
 // import GameState from '../shared/GameState';
 
 function generatePath(numPoints) {
@@ -21,7 +22,7 @@ const AutoActor = (function() {
 			this.path = false;
 			this.patrolling = false;
 			this.startPatrol = args.patrolOnStart !== undefined ? args.patrolOnStart : true;
-			this.waitLength = Utils.random(50, 250);
+			this.waitLength = Utils.random(500, 2500);
 			this.setPullZone();
 		}
 
@@ -36,24 +37,31 @@ const AutoActor = (function() {
 			};
 		}
 
+		getRandomDirection() {
+			return directions[Utils.random(0, 4)];
+		}
 		setPatrol() {
 			this.patrolling = true;
-			let randomDirection = this.direction = directions[Utils.random(0, 4)];
+			let randomDirection = this.getRandomDirection();
+
+			this.direction = randomDirection;
 			this.path = path[Utils.random(0,path.length - 1)];
 			this.active[randomDirection] = true;
 
 
 			this.pressed.push(randomDirection);
 			this.setSrc(this.srcLocations[randomDirection]);
+			this.startRender();
 		}
 
 		beforeRender() {
 			if (this.startPatrol) {
 				if (!this.patrolling) {
 					this.setPatrol();
+				} else {
+					super.move();
+					this.patrol();
 				}
-				super.move();
-				this.patrol();
 			} else {
 				this.resetX();
 
@@ -66,24 +74,23 @@ const AutoActor = (function() {
 		}
 
 		patrol() {
-			if (this.path <= 0) {
+			if (this.path === 0) {
 				if (this.pressed.shift()) {
 					this.active[this.direction] = false;
 				}
+				this.path--;
 				this.wait();
 			} else {
 				this.path--;
 			}
 		}
 
-		wait() {
-			if (this.waitLength > 0) {
-				this.current.x = 0;
-				this.waitLength--;
-			} else {
-				this.setPatrol();
-				this.waitLength = Utils.random(50, 150);
-			}
+		async wait() {
+			this.stopRender();
+			await timeout(this.waitLength);
+			this.patrolling = false;
+			this.render();
+			this.waitLength = Utils.random(500, 2500);
 		}
 
 	};

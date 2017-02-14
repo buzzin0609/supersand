@@ -19,12 +19,12 @@ export default class Profile extends SuperComponent {
 
         this.state = {
             startHp: startHp,
-            health: this.calculatePercentage(health, startHp),
-			maxKi: actor.maxKi || 50,
+            health: health,
+			maxKi: actor.attributes.maxKi || 50,
             ki: 0,
-			expToLevel: actor.expToLevel || 200,
+			expToLevel: actor.attributes.expToLevel || 200,
+			exp : actor.exp || 0
         };
-		this.state.exp = this.calculatePercentage(actor.exp || 0, this.state.expToLevel);
 
     }
 
@@ -58,11 +58,11 @@ export default class Profile extends SuperComponent {
 	}
 
 	setBarValue(prop, amount, stateValue, max, addRemove) {
-		let percentToChange = this.calculatePercentage(amount, max);
+
 		if (addRemove === 'remove') {
-			stateValue = Math.max(0, stateValue - percentToChange);
+			stateValue = Math.max(0, stateValue - amount);
 		} else {
-			stateValue = Math.min(100, stateValue + percentToChange);
+			stateValue = Math.min(max, stateValue + amount);
 		}
 
 		let newState = {};
@@ -80,15 +80,19 @@ export default class Profile extends SuperComponent {
                 <img className="profile__img" src={ `img/${actor.profilePic}` } alt={ actor.name } />
                 <div className="health-bar profile__bar">
                     <div className="health-bar__inner bar__inner"
-                         style={this.setTransform(this.state.health)}></div>
+                         style={this.setTransform(this.calculatePercentage(this.state.health, this.state.startHp))}>
+					</div>
+					<span>Health: {this.state.health}/{this.state.startHp}</span>
                 </div>
                 <div className="ki-bar profile__bar">
                     <div className="ki-bar__inner bar__inner"
-						 style={this.setTransform(this.state.ki)}></div>
+						 style={this.setTransform(this.calculatePercentage(this.state.ki, this.state.maxKi))}></div>
+					<span>Ki: {this.state.ki}/{this.state.maxKi}</span>
                 </div>
                 <div className="exp-bar profile__bar">
                     <div className="exp-bar__inner bar__inner"
-						 style={this.setTransform(this.state.exp)}></div>
+						 style={this.setTransform(this.calculatePercentage(this.state.exp, this.state.expToLevel))}></div>
+					<span>Exp: {this.state.exp}/{this.state.expToLevel}</span>
                 </div>
             </div>
         );

@@ -6,7 +6,7 @@ import Stage from '../Stage';
 import On from '../../utils/On';
 
 let goons = [
-	Goon(0.5, 0.7, false),
+	Goon(0.5, 0.7, true),
 	Goon(0.2, 0.7, false),
 	Goon(0.25, 0.7, false)
 ];
@@ -15,6 +15,9 @@ class Stage1 extends Stage {
 	constructor(props) {
 		super(props);
 		this.setNextGoon();
+		// setInterval(() => {
+		// 	On.trigger('level-up');
+		// }, 500);
 	}
 
 	setNextGoon() {

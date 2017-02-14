@@ -6,6 +6,7 @@ import {addProfileCard, removeProfileCard} from './StaticActorMethods';
 import GameState from '../shared/GameState';
 import GameLoop from '../gameloop/GameLoop';
 import '../levelling/registerLevelling';
+import { getExp } from '../levelling/levelUp';
 
 // const required = [
 //
@@ -44,8 +45,8 @@ class GameActor extends KeyboardActor {
 		this.attributes.maxKi = args.attributes.maxKi || 100;
 		this.attributes.ki = 0;
 
-		this.attributes.expToLevel = args.attributes.expToLevel || 200;
-		this.attributes.exp = args.exp || 0;
+		this.attributes.expToLevel = getExp(this.level);
+		this.attributes.exp = args.attributes.exp || 0;
         //noinspection JSUnresolvedVariable
         this.attacks = args.attacks || attacks;
         this.resetAttackState();

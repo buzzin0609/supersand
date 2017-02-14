@@ -10,12 +10,11 @@ const required = [
 ];
 
 const incrementers = {
-    health: 0.01,
-    startHp: 0.01,
-    speed: 0.001,
-    strength: 0.01,
-    maxKi: 0.01,
-    expToLevel: 0.1
+    health: 0.05,
+    startHp: 0.05,
+	speed: 0.01,
+    strength: 0.02,
+    maxKi: 0.05
 };
 
 const attrDefaults = {
