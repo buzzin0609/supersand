@@ -4,10 +4,6 @@ import Profile from './Profile';
 import slugify from '../utils/slugify';
 import Utils from '../utils/utils';
 
-export function handleAttack(attacker, attackee) {
-	let amount = attacker.baseHit + (attacker.strength * 0.1);
-	attackee.health -= amount;
-}
 
 export function timeout(time) {
 	return new Promise(resolve => setTimeout(function() {

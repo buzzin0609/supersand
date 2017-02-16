@@ -1,11 +1,20 @@
+import React from 'react';
+import Quest from './Quest';
 
 const Quests = {
 	items : {},
-	add : function(Item) {
-		this.items[Item.props.id] = Item;
+	add : function(args) {
+		if (!this.items[args.id]) {
+			this.items[args.id] = args;
+		}
 	},
-	get : function(num) {
-		return this.items[num];
+	get : function(num, isCompleted) {
+		let args = this.items[num];
+		if (isCompleted) {
+			args.completed = true;
+		}
+		return <Quest {...args} />;
+
 	}
 };
 

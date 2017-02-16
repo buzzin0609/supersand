@@ -3,12 +3,12 @@ import On from '../utils/On';
 
 On.set('level-up', levelUp);
 
-// exp += 10 * level * Math.log10(level + 1);
+
 function baseExp(level) {
 	return 45 + (8 * level);
 }
 
-export function mobXp(level) {
+export function mobExp(level) {
 	return (45 * (GameState.get('stage') || 1)) + (5 * level);
 }
 
@@ -17,7 +17,11 @@ function logFn(level) {
 }
 
 export function getExp(level) {
-	return Math.round(baseExp(level) * mobXp(level) * logFn(level));
+	return Math.round(baseExp(level) * mobExp(level) * logFn(level));
+}
+
+export function questExp() {
+	return Math.round(mobExp((GameState.get('stage') || 1)) * 5)
 }
 
 export default function levelUp() {

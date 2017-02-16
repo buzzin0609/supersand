@@ -36,7 +36,7 @@ export default class extends SuperComponent {
 	render() {
 		return (
 			<div className="quest-interface">
-				{Quests.get(this.state.quest)}
+				{Quests.get(this.state.quest, this.props.isCompleted)}
 			</div>
 		)
 	}

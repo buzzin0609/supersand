@@ -1,5 +1,6 @@
 import React from 'react';
 import SuperComponent from '../shared/SuperComponent';
+import On from '../utils/On';
 import GameState from '../shared/GameState';
 import MainMenu from './MainMenu';
 import Controls from './Controls';
@@ -14,6 +15,7 @@ import ForgotPassword from './ForgotPassword';
 import Pause from './Pause';
 import GameOver from './GameOver';
 import QuestInterface from '../quests/QuestInterface';
+
 
 // var GameState = require('../shared/GameState');
 
@@ -59,6 +61,7 @@ class Interface extends SuperComponent {
 		switch (this.state.view) {
 			case 'main':
 				content = <MainMenu />;
+				On.trigger('clear-game-loop');
 				break;
 			case 'controls':
 				content = <Controls />;
@@ -102,9 +105,12 @@ class Interface extends SuperComponent {
 			case 'quest':
 				content = <QuestInterface />;
 				break;
+			case 'quest-complete':
+				content = <QuestInterface isCompleted={true} />;
+				break;
 			default:
 				content = (
-					<div>No content chosen</div>
+					<div>Coming Soon</div>
 				)
 		}
 		return content;

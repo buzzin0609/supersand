@@ -2,7 +2,6 @@ import React from 'react';
 import SuperComponent from '../shared/SuperComponent';
 import GameState from '../shared/GameState';
 
-let btnId = 1;
 let letters = [
 	'A', 'S', 'D', 'F'
 ];
@@ -11,10 +10,10 @@ export default class AttackBtn extends SuperComponent {
 
 	constructor(props) {
 		super(props);
-		this.id = btnId;
-		this.letter = letters[btnId - 1];
-		this.key = `attack${btnId}`;
-		btnId++;
+		let { order } = props;
+		this.id = order;
+		this.letter = letters[order - 1];
+		this.key = `attack${order}`;
 	}
 
 	startAttack() {

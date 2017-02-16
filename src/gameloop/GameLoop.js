@@ -1,3 +1,5 @@
+import On from '../utils/On';
+
 var Singleton = (function () {
 	var Instance = false;
 	return class GameLoop {
@@ -11,6 +13,8 @@ var Singleton = (function () {
 			this.running = false;
 			this.clear.bind(this);
 			this.start.bind(this);
+			On.set('next-level', this.clear.bind(this));
+			On.set('clear-game-loop', this.clear.bind(this));
 
 			return Instance;
 		}
@@ -72,6 +76,7 @@ var Singleton = (function () {
 		}
 	};
 }());
+
 
 
 module.exports = new Singleton();

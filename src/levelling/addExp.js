@@ -8,7 +8,8 @@ On.set('quest-completed', addExp);
 export default function addExp(expValue) {
 	let {character} = GameState;
 	if (character) {
-		if (Math.min(character.exp += expValue, character.expToLevel) === character.expToLevel) {
+		character.attributes.exp = Math.min(character.attributes.exp + expValue, character.attributes.expToLevel);
+		if (character.attributes.exp === character.attributes.expToLevel) {
 			On.trigger('level-up');
 		}
 		character.profileCard.setExp(expValue);

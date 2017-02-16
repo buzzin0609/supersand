@@ -4,6 +4,7 @@ import GameState from '../shared/GameState';
 import GameControls from '../gameControls/GameControls';
 import Stages from '../Stages/Stages';
 import ProfileInterface from './ProfileInterface';
+import On from '../utils/On';
 
 
 export default class Game extends Component {
@@ -12,6 +13,8 @@ export default class Game extends Component {
 		this.state = {
 			stage : GameState.get('stage') || 1
 		}
+
+		On.set('next-stage', this.nextStage.bind(this));
 		// console.log(this.state);
 	}
 
@@ -23,6 +26,14 @@ export default class Game extends Component {
 
 	componentWillUnmount() {
 		GameLoop.stop.call(GameLoop);
+	}
+
+	nextStage() {
+		let stage = GameState.get('stage');
+		stage++;
+		this.setState({
+			stage
+		});
 	}
 
 	render() {
