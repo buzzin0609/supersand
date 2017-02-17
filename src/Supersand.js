@@ -8,12 +8,12 @@ import GameState from './shared/GameState';
 
 import Goku from './actor/Goku/Goku';
 import Vegeta from './actor/Vegeta/Vegeta';
-import Chad from './actor/Chad/Chad';
+import Trunks from './actor/Trunks/Trunks';
 
 GameState.set('characters', [
 	Vegeta,
 	Goku,
-	Chad
+	Trunks
 ]);
 // console.log(GameState);
 
@@ -58,3 +58,4 @@ class Supersand extends SuperComponent {
 }
 
 export default Supersand;
+

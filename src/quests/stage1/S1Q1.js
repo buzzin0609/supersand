@@ -39,13 +39,14 @@ export function stage1quest1() {
 			let newGoon = goons[0];
 			newGoon.clear();
 			newGoon.position.x = 300;
-			newGoon.render();
+			newGoon.startRender();
 			stage1quest1(goons);
 		} else {
 			completed(props.id);
-			
 		}
 	});
+
+
 }
 
 let questGoons = function() {
