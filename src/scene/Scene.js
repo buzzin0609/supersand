@@ -123,7 +123,7 @@ class Scene extends SuperComponent {
 		let scaleX = (window.innerWidth - 20) / this.canvas.width;
 		let scaleY = (window.innerHeight - 20) / this.canvas.height;
 		let parent = this.canvas.parentElement;
-		let scaleToFit = Utils.toFixed(Math.min(scaleX, scaleY), 4);
+		let scaleToFit = Utils.toFixed(Math.min(scaleX, scaleY), 3);
 		if (scaleToFit > 2) {
 			scaleToFit = 2;
 		}

@@ -10,8 +10,8 @@ const Trunks = function(args = false) {
 		imgUrl : 'characters/trunks.png',
 		profilePic : 'characters/trunks-profile.png',
 		attributes : {
-			'speed' : 3,
-			'strength': 40
+			'speed' : 1.5,
+			'strength': 10
 		},
 		frames : [
 			'2,8,8,8,8',

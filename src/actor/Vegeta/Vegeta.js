@@ -37,8 +37,8 @@ const Vegeta = function(args = false) {
 		imgUrl : 'vegeta-sheet-02.png',
 		profilePic : 'veg-port.png',
 		attributes : {
-			'speed' : 3,
-			'strength': 40
+			'speed' : 1.5,
+			'strength': 10
 		},
 		frames : [
 			'2,8,8,8,8,8,8,8',

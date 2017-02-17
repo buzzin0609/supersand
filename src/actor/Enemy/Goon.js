@@ -11,7 +11,7 @@ const Goon = function(startX, startY, patrol) {
 		profilePic : 'enemies/enemy-port.png',
 		attributes : {
 			'strength' : 3,
-			'speed' : Utils.toFixed(Utils.randomFloat(1,3), 2)
+			'speed' : Utils.toFixed(Utils.randomFloat(0.7,1.5), 2)
 		},
 		frames : [
 			'3,8,8,8,8,8',

@@ -12,7 +12,8 @@ const Goku = function(args = false) {
 		imgUrl : 'goku-normal-sheet.png',
 		profilePic : 'gok-port-ss.png',
 		attributes : {
-			'speed' : 3
+			'speed' : 1.5,
+			'strength': 10
 		},
 		frames : [
 			'2,50,8',
